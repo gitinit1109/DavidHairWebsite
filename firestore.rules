@@ -1,0 +1,184 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    // 1. Global Safety Net: default deny catch-all
+    match /{document=**} {
+      allow read, write: if false;
+    }
+
+    // 2. Helper functions and primitive controls
+    function isSignedIn() {
+      return request.auth != null;
+    }
+
+    function isAdmin() {
+      return isSignedIn() 
+        && (request.auth.uid == "admin_david_999" 
+            || request.auth.token.email == "hankyleisplay@gmail.com" 
+            || request.auth.token.email == "david@davidhair.com");
+    }
+
+    function isValidId(id) {
+      return id is string 
+        && id.size() >= 1 
+        && id.size() <= 128;
+    }
+
+    function incoming() {
+      return request.resource.data;
+    }
+
+    function existing() {
+      return resource.data;
+    }
+
+    // 3. Entity Validators
+    function isValidBlogPost(data) {
+      return data.title is string 
+        && data.title.size() >= 1 
+        && data.title.size() <= 200
+        && data.content is string 
+        && data.content.size() >= 1 
+        && data.content.size() <= 60000
+        && data.category is string 
+        && data.category.size() >= 1 
+        && data.category.size() <= 50
+        && (data.excerpt == null || (data.excerpt is string && data.excerpt.size() <= 500))
+        && (data.author == null || (data.author is string && data.author.size() <= 100))
+        && (data.publishDate == null || (data.publishDate is string && data.publishDate.size() <= 50))
+        && (data.readTime == null || (data.readTime is string && data.readTime.size() <= 50))
+        && (data.imgUrl == null || (data.imgUrl is string && data.imgUrl.size() <= 1000));
+    }
+
+    function isValidCategory(data) {
+      return data.name is string 
+        && data.name.size() >= 1 
+        && data.name.size() <= 100;
+    }
+
+    function isValidReview(data) {
+      return data.authorName is string 
+        && data.authorName.size() >= 1 
+        && data.authorName.size() <= 100
+        && (!('authorEmail' in data) || (data.authorEmail is string && data.authorEmail.size() <= 200))
+        && (data.rating is int || data.rating is float)
+        && data.rating >= 1
+        && data.rating <= 5
+        && data.content is string
+        && data.content.size() <= 5000
+        && data.createdAt is string
+        && data.createdAt.size() <= 100
+        && (!('isApproved' in data) || data.isApproved is bool);
+    }
+
+    function isValidMember(data) {
+      return data.uid is string 
+        && data.uid.size() >= 1 
+        && data.uid.size() <= 128
+        && data.displayName is string 
+        && data.displayName.size() >= 1 
+        && data.displayName.size() <= 100
+        && data.email is string 
+        && data.email.size() >= 3 
+        && data.email.size() <= 200
+        && data.phone is string 
+        && data.phone.size() >= 5 
+        && data.phone.size() <= 50
+        && data.password is string 
+        && data.password.size() >= 4 
+        && data.password.size() <= 100
+        && data.createdAt is string 
+        && data.createdAt.size() <= 100;
+    }
+
+    function isValidOrder(data) {
+      return data.id is string
+        && data.id.size() >= 1
+        && data.id.size() <= 128
+        && data.userId is string
+        && data.userId.size() >= 1
+        && data.userId.size() <= 128
+        && data.userEmail is string
+        && data.userEmail.size() >= 3
+        && data.userEmail.size() <= 200
+        && data.recipientName is string
+        && data.recipientName.size() >= 1
+        && data.recipientName.size() <= 100
+        && data.recipientPhone is string
+        && data.recipientPhone.size() >= 5
+        && data.recipientPhone.size() <= 50
+        && data.recipientAddress is string
+        && data.recipientAddress.size() >= 5
+        && data.recipientAddress.size() <= 500
+        && data.paymentMethod is string
+        && data.paymentMethod.size() >= 1
+        && data.paymentMethod.size() <= 50
+        && (data.totalAmount is int || data.totalAmount is float)
+        && data.totalAmount >= 0
+        && data.status is string
+        && (data.status == "pending" || data.status == "processing" || data.status == "shipped" || data.status == "completed" || data.status == "cancelled")
+        && data.createdAt is string
+        && data.createdAt.size() <= 100;
+    }
+
+    // 4. Collection Rules
+    match /blogs/{blogId} {
+      allow read: if true; // Public list and get
+      
+      allow create: if isValidId(blogId) 
+        && isValidBlogPost(incoming());
+        
+      allow update: if isValidId(blogId) 
+        && isValidBlogPost(incoming());
+        
+      allow delete: if isValidId(blogId);
+    }
+
+    match /categories/{categoryId} {
+      allow read: if true; // Public list and get
+      
+      allow create: if isValidId(categoryId) 
+        && isValidCategory(incoming());
+        
+      allow update: if isValidId(categoryId) 
+        && isValidCategory(incoming());
+        
+      allow delete: if isValidId(categoryId);
+    }
+
+    match /reviews/{reviewId} {
+      allow read: if true; // Public read
+      
+      allow create: if isValidId(reviewId) 
+        && isValidReview(incoming());
+        
+      allow update: if isValidId(reviewId) 
+        && isValidReview(incoming());
+        
+      allow delete: if isValidId(reviewId);
+    }
+
+    match /members/{memberId} {
+      allow read: if true;
+      
+      allow create: if isValidId(memberId)
+        && isValidMember(incoming());
+        
+      allow update: if isValidId(memberId)
+        && isValidMember(incoming());
+        
+      allow delete: if isValidId(memberId);
+    }
+
+    match /orders/{orderId} {
+      allow read: if true;
+        
+      allow create: if isValidId(orderId)
+        && isValidOrder(incoming());
+        
+      allow update: if isValidId(orderId);
+        
+      allow delete: if isValidId(orderId);
+    }
+  }
+}

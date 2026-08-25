@@ -1,0 +1,8 @@
+{
+  "name": "Remix 魔髮倉庫工作室 | 專業假髮諮詢",
+  "description": "專業男生量模訂製髮片，全真人髮手工鉤織。不分尺寸均一價26000元，提供客製化髮色、白髮量、頭旋髮流方向，並備有現貨。",
+  "requestFramePermissions": [],
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}

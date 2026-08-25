@@ -1,0 +1,393 @@
+@import url('https://fonts.googleapis.com/css2?family=Herr+Von+Muellerhoff&family=Noto+Sans+TC:wght@400;500;700;900&display=swap');
+@import "tailwindcss";
+@plugin "@tailwindcss/typography";
+
+@theme {
+  --font-sans: "Noto Sans TC", ui-sans-serif, system-ui, sans-serif;
+  --font-signature: "Herr Von Muellerhoff", cursive;
+  --color-brand-50: #fafaf9;
+  --color-brand-100: #f5f5f4;
+  --color-brand-200: #ded2c1;
+  --color-brand-300: #c7b49b;
+  --color-brand-400: #b39f82;
+  --color-brand-500: #a8927a;
+  --color-brand-600: #8e7a64;
+  --color-brand-700: #786a56;
+  --color-brand-800: #5f5445;
+  --color-brand-900: #4a3e31;
+}
+
+@utility scrollbar-none {
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
+  &::-webkit-scrollbar {
+    display: none; /* Chrome, Safari and Opera */
+  }
+}
+
+/* Custom styling for react-markdown rendered contents to resolve Tailwind resets */
+.markdown-body {
+  line-height: 1.8;
+  color: #27272a; /* zinc-800 */
+}
+
+.markdown-body h1 {
+  font-size: 2rem !important; /* text-3xl equivalent */
+  font-weight: 800 !important;
+  color: #09090b !important; /* zinc-950 */
+  margin-top: 1.75rem !important;
+  margin-bottom: 1rem !important;
+  line-height: 1.3 !important;
+  border-left: 5px solid #a8927a; /* Muted elegant side line indicator */
+  padding-left: 0.875rem !important;
+}
+
+.markdown-body h2 {
+  font-size: 1.625rem !important; /* text-2xl equivalent */
+  font-weight: 700 !important;
+  color: #09090b !important;
+  margin-top: 1.5rem !important;
+  margin-bottom: 0.75rem !important;
+  border-bottom: 2px solid #f4f4f5 !important; /* zinc-100 */
+  padding-bottom: 0.375rem !important;
+}
+
+.markdown-body h3 {
+  font-size: 1.25rem !important; /* text-xl equivalent */
+  font-weight: 700 !important;
+  color: #18181b !important; /* zinc-900 */
+  margin-top: 1.25rem !important;
+  margin-bottom: 0.5rem !important;
+}
+
+.markdown-body h4, .markdown-body h5, .markdown-body h6 {
+  font-size: 1.05rem !important;
+  font-weight: 600 !important;
+  color: #27272a !important;
+  margin-top: 1.1rem !important;
+  margin-bottom: 0.4rem !important;
+}
+
+.markdown-body p {
+  margin-top: 0px !important;
+  margin-bottom: 0.875rem !important;
+  font-weight: 350 !important; /* Noto Sans TC light equivalent */
+  font-size: 0.95rem !important; /* highly-readable body size */
+  line-height: 1.8 !important;
+}
+
+.markdown-body a {
+  color: #8e7a64 !important; /* brand-600 elegant soft taupe */
+  text-decoration: underline !important;
+  text-decoration-color: rgba(168, 146, 122, 0.4) !important;
+  text-underline-offset: 4px;
+  font-weight: 600 !important;
+  transition: all 0.2s ease;
+}
+
+.markdown-body a:hover {
+  color: #a8927a !important; /* brand-500 elegant sand */
+  text-decoration-color: #a8927a !important;
+}
+
+/* Bulleted and numbered lists */
+.markdown-body ul {
+  list-style-type: disc !important;
+  padding-left: 1.5rem !important;
+  margin-top: 0.5rem !important;
+  margin-bottom: 1rem !important;
+  color: #27272a !important;
+}
+
+.markdown-body ol {
+  list-style-type: decimal !important;
+  padding-left: 1.5rem !important;
+  margin-top: 0.5rem !important;
+  margin-bottom: 1rem !important;
+  color: #27272a !important;
+}
+
+.markdown-body li {
+  margin-bottom: 0.3125rem !important;
+  font-weight: 350 !important;
+}
+
+/* Beautiful dark preformatted code blocks */
+.markdown-body pre {
+  background-color: #09090b !important; /* zinc-950 rich black */
+  color: #f4f4f5 !important; /* zinc-100 code text */
+  padding: 1rem 1.25rem !important;
+  border-radius: 0.75rem !important;
+  margin: 1.25rem 0 !important;
+  border: 1px solid #27272a !important; /* zinc-800 */
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15) !important;
+  overflow-x: auto !important;
+}
+
+/* Style for actual code elements (handles font configuration) */
+.markdown-body code {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace !important;
+  font-size: 0.85em !important;
+  background-color: #f4f4f5 !important; /* zinc-100 placeholder background for inside inline paragraph elements */
+  color: #e11d48 !important; /* stylish rose-600 inline focus highlight */
+  padding: 0.15rem 0.35rem !important;
+  border-radius: 0.25rem !important;
+  border: 1px solid #e4e4e7 !important;
+  font-weight: 500 !important;
+}
+
+/* Correct reset inside block formatting */
+.markdown-body pre code {
+  background-color: transparent !important;
+  color: inherit !important;
+  padding: 0 !important;
+  border-radius: 0 !important;
+  border: none !important;
+  font-size: inherit !important;
+  box-shadow: none !important;
+}
+
+/* Blockquote design */
+.markdown-body blockquote {
+  background-color: #fafaf9 !important; /* brand-50 light background */
+  border-left: 4px solid #a8927a !important; /* brand-500 light sand line */
+  padding: 1rem 1.25rem !important;
+  border-radius: 0 0.75rem 0.75rem 0 !important;
+  font-style: italic !important;
+  color: #4a4a4a !important;
+  margin: 1.25rem 0 !important;
+  line-height: 1.7 !important;
+}
+
+.markdown-body hr {
+  border: 0 !important;
+  border-top: 2px solid #f4f4f5 !important;
+  margin: 2rem 0 !important;
+}
+
+/* Liquid Glass styles for Desktop/PC - Professional Minimalist Warm Palette */
+@keyframes morph-brand-gold {
+  0% { border-radius: 40% 60% 70% 30% / 40% 50% 60% 50%; transform: translate(0px, 0px) rotate(0deg) scale(1.0); }
+  33% { border-radius: 70% 30% 50% 50% / 60% 40% 60% 40%; transform: translate(60px, 40px) rotate(120deg) scale(1.15); }
+  66% { border-radius: 30% 70% 40% 60% / 50% 60% 40% 50%; transform: translate(-40px, 80px) rotate(240deg) scale(0.9); }
+  100% { border-radius: 40% 60% 70% 30% / 40% 50% 60% 50%; transform: translate(0px, 0px) rotate(360deg) scale(1.0); }
+}
+
+@keyframes morph-brand-taupe {
+  0% { border-radius: 60% 40% 50% 50% / 50% 60% 40% 50%; transform: translate(0px, 0px) rotate(0deg) scale(1.0); }
+  33% { border-radius: 40% 60% 60% 40% / 40% 50% 50% 60%; transform: translate(-50px, 50px) rotate(-120deg) scale(0.85); }
+  66% { border-radius: 50% 50% 70% 30% / 60% 30% 70% 40%; transform: translate(40px, -60px) rotate(-240deg) scale(1.1); }
+  100% { border-radius: 60% 40% 50% 50% / 50% 60% 40% 50%; transform: translate(0px, 0px) rotate(-360deg) scale(1.0); }
+}
+
+@keyframes morph-brand-sand {
+  0% { border-radius: 50% 50% 30% 70% / 50% 40% 60% 50%; transform: translate(0px, 0px) rotate(0deg) scale(1.0); }
+  50% { border-radius: 30% 70% 60% 40% / 40% 60% 40% 60%; transform: translate(70px, -30px) rotate(180deg) scale(1.2); }
+  100% { border-radius: 50% 50% 30% 70% / 50% 40% 60% 50%; transform: translate(0px, 0px) rotate(360deg) scale(1.0); }
+}
+
+@keyframes morph-brand-bronze {
+  0% { border-radius: 30% 70% 50% 50% / 60% 40% 60% 40%; transform: translate(0px, 0px) rotate(0deg) scale(1.0); }
+  50% { border-radius: 60% 40% 70% 30% / 40% 60% 40% 60%; transform: translate(-30px, 70px) rotate(-180deg) scale(0.9); }
+  100% { border-radius: 30% 70% 50% 50% / 60% 40% 60% 40%; transform: translate(0px, 0px) rotate(-360deg) scale(1.0); }
+}
+
+.liquid-glass-bg {
+  background: radial-gradient(circle at 5% 15%, rgba(142, 122, 100, 0.04) 0%, transparent 40%),
+              radial-gradient(circle at 95% 25%, rgba(168, 146, 122, 0.03) 0%, transparent 40%),
+              radial-gradient(circle at 10% 85%, rgba(74, 62, 49, 0.02) 0%, transparent 45%),
+              radial-gradient(circle at 90% 75%, rgba(142, 122, 100, 0.03) 0%, transparent 45%),
+              #faf9f6;
+  position: relative;
+}
+
+/* Liquid glass animated background blobs */
+.liquid-glass-blob-container {
+  overflow: hidden;
+  pointer-events: none;
+  contain: strict;
+}
+
+.liquid-google-blue {
+  animation: morph-brand-gold 24s ease-in-out infinite alternate;
+  background: radial-gradient(circle, rgba(168, 146, 122, 0.08) 0%, rgba(168, 146, 122, 0) 70%);
+  filter: blur(40px);
+  will-change: transform, border-radius;
+  transform: translateZ(0);
+}
+
+.liquid-google-red {
+  animation: morph-brand-taupe 20s ease-in-out infinite alternate;
+  background: radial-gradient(circle, rgba(142, 122, 100, 0.07) 0%, rgba(142, 122, 100, 0) 70%);
+  filter: blur(40px);
+  will-change: transform, border-radius;
+  transform: translateZ(0);
+}
+
+.liquid-google-yellow {
+  animation: morph-brand-sand 22s ease-in-out infinite alternate;
+  background: radial-gradient(circle, rgba(212, 175, 55, 0.07) 0%, rgba(212, 175, 55, 0) 70%);
+  filter: blur(40px);
+  will-change: transform, border-radius;
+  transform: translateZ(0);
+}
+
+.liquid-google-green {
+  animation: morph-brand-bronze 26s ease-in-out infinite alternate;
+  background: radial-gradient(circle, rgba(142, 122, 100, 0.06) 0%, rgba(142, 122, 100, 0) 70%);
+  filter: blur(40px);
+  will-change: transform, border-radius;
+  transform: translateZ(0);
+}
+
+/* Pristine fluid glass card panel */
+.is-desktop .liquid-glass-panel {
+  background: rgba(255, 255, 255, 0.75) !important;
+  backdrop-filter: blur(10px) !important;
+  -webkit-backdrop-filter: blur(10px) !important;
+  border: 1px solid rgba(255, 255, 255, 0.65) !important;
+  box-shadow: 
+    0 8px 24px -6px rgba(74, 60, 16, 0.05), 
+    inset 0 1px 1px rgba(255, 255, 255, 0.9) !important;
+  position: relative;
+  overflow: hidden;
+  transition: border-color 0.25s ease, box-shadow 0.25s ease, transform 0.25s ease !important;
+}
+
+.is-desktop .liquid-glass-panel:hover {
+  border-color: rgba(212, 175, 55, 0.4) !important;
+  box-shadow: 
+    0 12px 32px -8px rgba(212, 175, 55, 0.1),
+    inset 0 1.5px 1.5px rgba(255, 255, 255, 0.95) !important;
+  transform: translateY(-2px);
+}
+
+.is-desktop .liquid-glass-panel::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -150%;
+  width: 150%;
+  height: 100%;
+  background: linear-gradient(
+    95deg,
+    transparent 0%,
+    rgba(255, 255, 255, 0.1) 40%,
+    rgba(255, 255, 255, 0.55) 50%,
+    rgba(255, 255, 255, 0.1) 60%,
+    transparent 100%
+  );
+  transform: skewX(-20deg);
+  pointer-events: none;
+  opacity: 0.85;
+}
+
+.is-desktop .liquid-glass-panel:hover::after {
+  left: 150%;
+  transition: left 1.5s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* Pristine fluid glass card panel - Dark version */
+.is-desktop .liquid-glass-panel-dark {
+  background: rgba(24, 24, 27, 0.9) !important;
+  backdrop-filter: blur(10px) !important;
+  -webkit-backdrop-filter: blur(10px) !important;
+  border: 1px solid rgba(255, 255, 255, 0.12) !important;
+  box-shadow: 
+    0 8px 24px -6px rgba(0, 0, 0, 0.3), 
+    inset 0 1px 1px rgba(255, 255, 255, 0.08) !important;
+  position: relative;
+  overflow: hidden;
+  transition: border-color 0.25s ease, box-shadow 0.25s ease, transform 0.25s ease !important;
+}
+
+.is-desktop .liquid-glass-panel-dark:hover {
+  border-color: rgba(212, 175, 55, 0.3) !important;
+  box-shadow: 
+    0 20px 48px -12px rgba(212, 175, 55, 0.15),
+    inset 0 1.5px 1.5px rgba(255, 255, 255, 0.12),
+    inset 0 -1px 2px rgba(0, 0, 0, 0.01) !important;
+  transform: translateY(-2px);
+}
+
+.is-desktop .liquid-glass-panel-dark::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -150%;
+  width: 150%;
+  height: 100%;
+  background: linear-gradient(
+    95deg,
+    transparent 0%,
+    rgba(255, 255, 255, 0.03) 40%,
+    rgba(255, 255, 255, 0.15) 50%,
+    rgba(255, 255, 255, 0.03) 60%,
+    transparent 100%
+  );
+  transform: skewX(-20deg);
+  pointer-events: none;
+  opacity: 0.85;
+}
+
+.is-desktop .liquid-glass-panel-dark:hover::after {
+  left: 150%;
+  transition: left 1.5s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* Semi-transparent navigation panel with subtle reflection stream */
+.is-desktop .liquid-glass-nav {
+  background: rgba(255, 255, 255, 0.55) !important;
+  backdrop-filter: blur(24px) saturate(190%) !important;
+  -webkit-backdrop-filter: blur(24px) saturate(190%) !important;
+  border-bottom: 1px solid rgba(212, 175, 55, 0.15) !important;
+  box-shadow: 
+    0 10px 30px -10px rgba(0, 0, 0, 0.05),
+    inset 0 1px 1px rgba(255, 255, 255, 0.8) !important;
+}
+
+/* Minimalist, professional typography for titles */
+.is-desktop .liquid-glass-heading {
+  display: inline-block !important;
+  background: transparent !important;
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+  border: none !important;
+  box-shadow: none !important;
+  padding: 0 0 0.5rem 0 !important;
+  border-radius: 0 !important;
+  border-bottom: 2px solid #8e7a64 !important;
+}
+
+.is-desktop .liquid-glass-heading-dark {
+  display: inline-block !important;
+  background: transparent !important;
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+  border: none !important;
+  box-shadow: none !important;
+  padding: 0 0 0.5rem 0 !important;
+  border-radius: 0 !important;
+  border-bottom: 2px solid #a8927a !important;
+}
+
+/* Lock image/icon container size to prevent scaling under extra large font sizes */
+.step-image-lock-size {
+  width: 128px !important;
+  height: 160px !important;
+  flex-shrink: 0 !important;
+  min-width: 128px !important;
+  min-height: 160px !important;
+}
+
+@media (min-width: 768px) {
+  .step-image-lock-size {
+    width: 160px !important;
+    height: 220px !important;
+    flex-shrink: 0 !important;
+    min-width: 160px !important;
+    min-height: 220px !important;
+  }
+}
+
+

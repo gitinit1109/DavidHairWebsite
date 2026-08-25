@@ -1,0 +1,97 @@
+{
+  "entities": {
+    "BlogPost": {
+      "title": "BlogPost",
+      "description": "An article published on the blog of David Hair Wig",
+      "type": "object",
+      "properties": {
+        "title": { "type": "string", "description": "The title of the article" },
+        "content": { "type": "string", "description": "Full markdown content of the post" },
+        "category": { "type": "string", "description": "Category of the article" },
+        "excerpt": { "type": "string", "description": "Short excerpt summarizing the article" },
+        "author": { "type": "string", "description": "The author name" },
+        "publishDate": { "type": "string", "description": "Publish date string" },
+        "readTime": { "type": "string", "description": "Estimated read duration" },
+        "imgUrl": { "type": "string", "description": "Cover image URL" }
+      },
+      "required": ["title", "content", "category", "author", "publishDate"]
+    },
+    "Category": {
+      "title": "Category",
+      "description": "A blog post category",
+      "type": "object",
+      "properties": {
+        "name": { "type": "string", "description": "The unique name of the category" }
+      },
+      "required": ["name"]
+    },
+    "Review": {
+      "title": "Review",
+      "description": "A customer review with a 1-5 star rating and comments",
+      "type": "object",
+      "properties": {
+        "authorName": { "type": "string", "description": "The reviewer's name or nickname" },
+        "authorEmail": { "type": "string", "description": "Optional reviewer's email" },
+        "rating": { "type": "integer", "description": "Star rating from 1 to 5" },
+        "content": { "type": "string", "description": "Feedback content text" },
+        "createdAt": { "type": "string", "description": "Submission ISO timestamp string" },
+        "isApproved": { "type": "boolean", "description": "Approval status for moderation" }
+      },
+      "required": ["authorName", "rating", "content", "createdAt"]
+    },
+    "Member": {
+      "title": "Member",
+      "description": "A registered member/user account",
+      "type": "object",
+      "properties": {
+        "uid": { "type": "string", "description": "The unique user ID" },
+        "displayName": { "type": "string", "description": "User display name" },
+        "email": { "type": "string", "description": "User email address" },
+        "phone": { "type": "string", "description": "User contact phone number" },
+        "password": { "type": "string", "description": "User login password" },
+        "createdAt": { "type": "string", "description": "Registration timestamp" }
+      },
+      "required": ["uid", "displayName", "email", "phone", "password", "createdAt"]
+    },
+    "Order": {
+      "title": "Order",
+      "description": "An order created in the shopping cart system",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string", "description": "Unique order ID" },
+        "userId": { "type": "string", "description": "The UID of the ordering member" },
+        "userEmail": { "type": "string", "description": "The Email of the ordering member" },
+        "recipientName": { "type": "string", "description": "Name of the recipient" },
+        "recipientPhone": { "type": "string", "description": "Phone of the recipient" },
+        "recipientAddress": { "type": "string", "description": "Shipping address" },
+        "paymentMethod": { "type": "string", "description": "Method of payment chosen" },
+        "totalAmount": { "type": "integer", "description": "Total amount in NTD" },
+        "status": { "type": "string", "description": "Order status", "enum": ["pending", "processing", "shipped", "completed", "cancelled"] },
+        "createdAt": { "type": "string", "description": "ISO timestamp of order creation" }
+      },
+      "required": ["id", "userId", "userEmail", "recipientName", "recipientPhone", "recipientAddress", "paymentMethod", "totalAmount", "status", "createdAt"]
+    }
+  },
+  "firestore": {
+    "blogs/{blogId}": {
+      "schema": "BlogPost",
+      "description": "Collection of blog post documents"
+    },
+    "categories/{categoryId}": {
+      "schema": "Category",
+      "description": "Collection of category documents"
+    },
+    "reviews/{reviewId}": {
+      "schema": "Review",
+      "description": "Collection of customer reviews and ratings"
+    },
+    "members/{memberId}": {
+      "schema": "Member",
+      "description": "Collection of registered member accounts"
+    },
+    "orders/{orderId}": {
+      "schema": "Order",
+      "description": "Collection of customer orders"
+    }
+  }
+}
