@@ -1,4 +1,4 @@
-import { Scissors, Ruler, Sparkles, Clock, CheckCircle2, ChevronLeft, ChevronRight, ChevronDown, ChevronUp, Settings, Sliders, Menu, MessageCircle, Star, PackageSearch, Shield, ShieldCheck, MapPin, Phone, ThumbsUp, HeartHandshake, HeadphonesIcon, BookHeart, Instagram, Facebook, AtSign, Mail, Send, X, Bot, Play, Youtube, Sparkle, ArrowUpRight, Heart, Smile, Leaf, Diamond, User as UserIcon, ShoppingCart, ShoppingBag, CreditCard, Truck, History, ClipboardList, Trash2, Plus, Minus, Home, ZoomIn, Maximize2 } from 'lucide-react';
+import { Scissors, Ruler, Sparkles, Clock, CheckCircle2, ChevronLeft, ChevronRight, ChevronDown, ChevronUp, Settings, Sliders, Menu, MessageCircle, Star, PackageSearch, Shield, ShieldCheck, MapPin, Phone, ThumbsUp, HeartHandshake, HeadphonesIcon, BookHeart, Instagram, Facebook, AtSign, Send, X, Bot, Play, Youtube, Sparkle, ArrowUpRight, Heart, Smile, Leaf, Diamond, User as UserIcon, ShoppingCart, ShoppingBag, CreditCard, Truck, History, ClipboardList, Trash2, Plus, Minus, Home, ZoomIn, Maximize2 } from 'lucide-react';
 import { motion, useInView, useSpring, useMotionValue, useScroll, useTransform, AnimatePresence } from 'motion/react';
 import { useState, useEffect, useRef, useCallback, lazy, Suspense } from 'react';
 import Markdown from 'react-markdown';
@@ -7,6 +7,7 @@ import { fetchChannelVideos, YouTubeVideo } from './services/youtubeService';
 import { auth, logoutUser, loginWithAdminCredentials, onAuthStateChanged, User, registerMember, loginMember, deleteMember, getMembersList, RegisteredMember, createDbOrder, getUserOrders, getAllOrders, updateOrderStatus, deleteOrder, DbOrder } from './services/firebase';
 import EditableText from './components/EditableText';
 import HairTroubleBanner from './components/HairTroubleBanner';
+import AIChatWidget from './components/AIChatWidget';
 import type { StoreProduct } from './components/OnlineStore';
 
 // Lazily loaded views: each is only shown behind a `currentView` switch, so
@@ -2188,10 +2189,6 @@ export default function App() {
                         <a href="tel:0909056036" className="hover:text-brand-400 transition-colors">0909 056 036</a>
                       </li>
                       <li className="flex items-center gap-3">
-                        <Mail className="w-4 h-4 text-brand-400 shrink-0" />
-                        <a href="mailto:davidhair0723@gmail.com" className="hover:text-brand-400 transition-colors break-all">davidhair0723@gmail.com</a>
-                      </li>
-                      <li className="flex items-center gap-3">
                         <MessageCircle className="w-4 h-4 text-brand-400 shrink-0" />
                         <a href="https://line.me/R/ti/p/@davidhair" target="_blank" rel="noreferrer" className="hover:text-brand-400 transition-colors">官方 LINE @davidhair</a>
                       </li>
@@ -3266,7 +3263,7 @@ export default function App() {
                     <div className="font-bold text-lg text-zinc-900 mb-1">營業時間</div>
                     <EditableText
                       idKey="loc-txg-hours"
-                      defaultText="10:00 - 19:00"
+                      defaultText="無固定營業時間，採預約制彈性安排"
                       as="span"
                       className="font-light text-lg block"
                       isAdmin={isAdminUser}
@@ -3510,13 +3507,9 @@ export default function App() {
                    <Phone className="w-4 h-4 text-zinc-500 shrink-0" />
                    <a href="tel:0909056036" className="text-zinc-300 hover:text-brand-500 transition-colors">0909 056 036</a>
                 </li>
-                <li className="flex items-center gap-3">
-                   <Mail className="w-4 h-4 text-zinc-500 shrink-0" />
-                   <a href="mailto:davidhair0723@gmail.com" className="text-zinc-300 hover:text-brand-500 transition-colors break-all">davidhair0723@gmail.com</a>
-                </li>
                 <li className="flex items-start gap-3">
                    <Clock className="w-4 h-4 text-zinc-500 mt-0.5 shrink-0" />
-                   <span>營業時間：10:00 - 19:00（全台門市皆採全預約制）</span>
+                   <span>營業時間：台北・高雄 10:00 - 19:00；台中無固定時間，採預約制彈性安排</span>
                 </li>
               </ul>
             </div>
@@ -3828,7 +3821,7 @@ export default function App() {
                       </div>
                       <div>
                         <h4 className="font-extrabold text-zinc-900 text-base mb-1">三、 售後問題聯繫窗口</h4>
-                        <p>如對商品品質或訂單狀態有任何疑問，歡迎隨時透過官方 LINE 或電子信箱（davidhair0723@gmail.com）與我們聯繫，我們將盡快為您協助處理。</p>
+                        <p>如對商品品質或訂單狀態有任何疑問，歡迎隨時透過官方 LINE 與我們聯繫，我們將盡快為您協助處理。</p>
                       </div>
                     </div>
                   </>
@@ -5255,6 +5248,8 @@ export default function App() {
           </motion.div>
         )}
       </AnimatePresence>
+
+      <AIChatWidget />
     </div>
   );
 }

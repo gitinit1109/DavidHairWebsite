@@ -8,7 +8,9 @@ export default defineConfig(({mode}) => {
   return {
     plugins: [react(), tailwindcss()],
     define: {
-      'process.env.GEMINI_API_KEY': JSON.stringify(env.GEMINI_API_KEY),
+      // GEMINI_API_KEY is intentionally NOT defined here: it's read only by
+      // server.ts (server-side) for the /api/chat endpoint. Exposing it via
+      // `define` would bake the secret key into the client-side JS bundle.
       'process.env.GOOGLE_MAPS_PLATFORM_KEY': JSON.stringify(env.GOOGLE_MAPS_PLATFORM_KEY || env.VITE_GOOGLE_MAPS_PLATFORM_KEY || ''),
     },
     resolve: {

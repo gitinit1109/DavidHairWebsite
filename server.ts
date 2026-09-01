@@ -1,8 +1,16 @@
+import dotenv from "dotenv";
 import express from "express";
 import path from "path";
 import fs from "fs";
 import os from "os";
 import { createServer as createViteServer } from "vite";
+import { GoogleGenAI } from "@google/genai";
+
+// Vite's dev server auto-loads .env.local for the client, but this file runs
+// outside Vite, so we load it ourselves for the AI 客服 key (.env as a
+// fallback, then .env.local so it can override — mirrors Vite's own order).
+dotenv.config({ path: path.join(process.cwd(), ".env") });
+dotenv.config({ path: path.join(process.cwd(), ".env.local"), override: true });
 
 const app = express();
 app.use(express.json());
@@ -658,6 +666,112 @@ app.post("/api/site-content", (req, res) => {
   db.siteContent = { ...db.siteContent, ...newContent };
   saveDB(db);
   res.json(db.siteContent);
+});
+
+// --- AI 客服 (Gemini) ---
+// Knowledge base is loaded once at startup and reused for every request —
+// reading the file per-request would add avoidable disk I/O to each reply.
+const KNOWLEDGE_BASE_PATH = path.join(process.cwd(), "大衛假髮_AI特助訓練知識庫_v1.txt");
+let knowledgeBase = "";
+try {
+  knowledgeBase = fs.readFileSync(KNOWLEDGE_BASE_PATH, "utf-8");
+} catch (err) {
+  console.warn("[AI Chat] Knowledge base file not found, AI 客服 will run without it:", err);
+}
+
+const SYSTEM_INSTRUCTION = `你是「大衛假髮 David Hair」網站上的 AI 客服「大衛哥AI特助」。請根據以下知識庫內容回答顧客問題。
+
+規則：
+- 用繁體中文回答，語氣溫暖、專業、簡潔（口語化，不要長篇大論，通常 2-4 句話內講完）。
+- 只根據知識庫內容回答；知識庫沒提到的資訊（例如確切庫存、個人化診斷、醫療建議）就誠實說不清楚，並引導對方加 LINE (@davidhair) 或撥打 0909-056-036 由真人顧問協助。
+- 不要編造價格、療效或門市沒有的服務。
+- 適時引導顧客加入官方 LINE 預約諮詢。
+
+知識庫：
+${knowledgeBase}`;
+
+const genAI = process.env.GEMINI_API_KEY
+  ? new GoogleGenAI({ apiKey: process.env.GEMINI_API_KEY })
+  : null;
+
+// Streams the reply back as plain chunked text so the browser can render it
+// token-by-token instead of waiting for the full response — this is what
+// makes the chat feel fast even though total generation time is unchanged.
+app.post("/api/chat", async (req, res) => {
+  if (!genAI) {
+    res.status(503).json({
+      error: "AI 客服尚未設定金鑰，請於 .env.local 加入 GEMINI_API_KEY 後重啟伺服器。",
+    });
+    return;
+  }
+
+  const { message, history } = req.body as {
+    message?: string;
+    history?: { role: "user" | "model"; text: string }[];
+  };
+
+  if (!message || typeof message !== "string" || !message.trim()) {
+    res.status(400).json({ error: "Missing message" });
+    return;
+  }
+
+  // Only keep the last few turns — a shorter prompt sends/processes faster
+  // and customer-service context rarely needs more than that anyway.
+  const recentHistory = Array.isArray(history) ? history.slice(-8) : [];
+  const contents = [
+    ...recentHistory.map((turn) => ({
+      role: turn.role,
+      parts: [{ text: turn.text }],
+    })),
+    { role: "user", parts: [{ text: message }] },
+  ];
+
+  res.setHeader("Content-Type", "text/plain; charset=utf-8");
+  res.setHeader("Cache-Control", "no-cache");
+  res.setHeader("X-Accel-Buffering", "no"); // disable proxy buffering, if any
+
+  // NOTE: this listens on `res` (the response stream), not `req`. Express's
+  // body parser fully consumes/ends the request stream before this handler
+  // even runs, which makes a plain readable stream emit its own 'close' —
+  // so `req.on('close', ...)` fires immediately on every request and aborts
+  // the Gemini call before it starts. `res` only closes on a real client
+  // disconnect, which is what we actually want to detect here.
+  const abortController = new AbortController();
+  res.on("close", () => abortController.abort());
+
+  try {
+    const stream = await genAI.models.generateContentStream({
+      model: "gemini-2.5-flash",
+      contents,
+      config: {
+        systemInstruction: SYSTEM_INSTRUCTION,
+        // Flash's "thinking" step adds latency the customer can feel; this
+        // is a simple Q&A task that doesn't need multi-step reasoning.
+        thinkingConfig: { thinkingBudget: 0 },
+        maxOutputTokens: 500,
+        abortSignal: abortController.signal,
+      },
+    });
+
+    for await (const chunk of stream) {
+      const text = chunk.text;
+      if (text) {
+        res.write(text);
+      }
+    }
+    res.end();
+  } catch (err: any) {
+    if (abortController.signal.aborted) {
+      // Client navigated away / closed the chat — nothing to send back.
+      return;
+    }
+    console.error("[AI Chat] Gemini request failed:", err);
+    if (!res.headersSent) {
+      res.status(500).json({ error: "AI 客服暫時無法回應，請稍後再試或直接加 LINE 詢問。" });
+    } else {
+      res.end("\n\n（抱歉，回覆中斷了，請重新發送一次或直接加 LINE 詢問 🙏）");
+    }
+  }
 });
 
 // Helper to generate a smart tag dynamically based on the title of the product

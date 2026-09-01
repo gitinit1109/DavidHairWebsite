@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { MapPin, Clock, Phone, ExternalLink, Navigation } from 'lucide-react';
+import { MapPin, Clock, Phone, ExternalLink, Navigation, Car } from 'lucide-react';
 
 interface Branch {
   id: string;
@@ -8,6 +8,7 @@ interface Branch {
   address: string;
   fullAddress: string;
   hours: string;
+  parking: string;
   phone: string;
   lat: number;
   lng: number;
@@ -24,6 +25,7 @@ const BRANCHES: Branch[] = [
     address: '106臺北市大安區仁愛里忠孝東路四段112號11F-13',
     fullAddress: '106臺北市大安區仁愛里忠孝東路四段112號11F-13',
     hours: '10:00 - 19:00',
+    parking: '大樓周邊路段設有收費停車格與公有收費停車場，建議出發前先用停車 APP（如台北好停車）查詢即時空位；捷運忠孝復興站步行約 3 分鐘，也很推薦直接搭乘大眾運輸前來。',
     phone: '02-2771-3329 (採預約制)',
     lat: 25.0416,
     lng: 121.5438,
@@ -37,7 +39,8 @@ const BRANCHES: Branch[] = [
     shortName: 'TXG 台中店',
     address: '台中市西屯區台灣大道二段906號2樓',
     fullAddress: '台中市西屯區台灣大道二段906號2樓',
-    hours: '10:00 - 19:00',
+    hours: '無固定營業時間，採預約制彈性安排',
+    parking: '台灣大道二段沿線設有路邊收費停車格，建議開車前先以台中市停車管理處官網或停車 APP 查詢鄰近即時空位，避免撲空。',
     phone: '04-2312-3329 (採預約制)',
     lat: 24.1612,
     lng: 120.6481,
@@ -52,6 +55,7 @@ const BRANCHES: Branch[] = [
     address: '825高雄市橋頭區仕豐南路仕龍西巷10號',
     fullAddress: '825高雄市橋頭區仕豐南路仕龍西巷10號',
     hours: '10:00 - 19:00 (每週三、四公休)',
+    parking: '店門口即可停車，開車前來相當方便，無需額外尋找停車位。',
     phone: '07-611-3829 (採預約制)',
     lat: 22.7574,
     lng: 120.3015,
@@ -167,6 +171,14 @@ export default function StoreMap() {
                   <div className="text-xs">
                     <p className="font-bold text-zinc-900">營業時間</p>
                     <p className="text-zinc-650 font-medium mt-0.5">{selectedBranch.hours}</p>
+                  </div>
+                </div>
+
+                <div className="flex gap-2">
+                  <Car className="w-4 h-4 text-[#8e7a64] shrink-0 mt-0.5" />
+                  <div className="text-xs">
+                    <p className="font-bold text-zinc-900">停車資訊</p>
+                    <p className="text-zinc-650 font-medium mt-0.5 leading-relaxed">{selectedBranch.parking}</p>
                   </div>
                 </div>
               </div>

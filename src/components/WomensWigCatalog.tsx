@@ -400,7 +400,7 @@ export default function WomensWigCatalog({
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-brand-200 via-brand-400 to-amber-200">
                 <EditableText
                   idKey="womens-banner-subtitle"
-                  defaultText="100% 真人髮絲・專為女性打造的「第二層皮膚」"
+                  defaultText="真髮／科技絲髮・專為女性打造的「第二層皮膚」"
                   as="span"
                   isAdmin={isAdmin}
                   isEditMode={isEditMode}
@@ -412,7 +412,7 @@ export default function WomensWigCatalog({
             
             <EditableText
               idKey="womens-banner-desc"
-              defaultText="專為女性頭頂稀疏、分線漸寬、頭頂扁塌、白髮覆蓋、產後落髮及醫療需求設計。嚴選 100% 優質少女真髮，完美與原生髮無痕相融，劇烈運動亦不移位。"
+              defaultText="專為女性頭頂稀疏、分線漸寬、頭頂扁塌、白髮覆蓋、產後落髮及醫療需求設計。嚴選 100% 優質少女真髮，完美與原生髮無痕相融。"
               as="p"
               className="text-zinc-300 font-light text-base sm:text-lg md:text-xl leading-relaxed max-w-3xl"
               isAdmin={isAdmin}
@@ -601,37 +601,27 @@ export default function WomensWigCatalog({
               Bespoke Craftsmanship
             </span>
             <h2 className="text-3xl sm:text-4xl font-black tracking-tight text-white">
-              女士假髮・尊榮五大客製服務流程
+              女士假髮・尊榮三大客製服務流程
             </h2>
             <p className="text-zinc-400 font-light text-sm sm:text-base leading-relaxed">
-              從頭型量模、真髮色號比對到現場沙龍修剪，為您打造如天然生長的豐盈秀髮。
+              從一對一預約諮詢、現場試戴挑選到現場沙龍修剪，為您打造如天然生長的豐盈秀髮。
             </p>
           </div>
 
-          <div className="relative z-10 grid md:grid-cols-5 gap-6">
+          <div className="relative z-10 grid md:grid-cols-3 gap-6">
             {[
               {
                 step: '01',
                 title: '線上預約諮詢',
-                desc: '加 LINE 諮詢。由專員為您安排專屬女性獨立 VIP 包廂。'
+                desc: '加 LINE 諮詢。現場1對1試戴服務。'
               },
               {
                 step: '02',
-                title: '3D頭型精準量模',
-                desc: '針對頭骨弧度、落髮區域、髮旋毛流及 30+ 種原生髮色進行 1:1 精密比對。'
-              },
-              {
-                step: '03',
-                title: '純手工單針勾織',
-                desc: '採用 100% 優質少女真髮，每平方厘米 45 針高密度針織於真蠶絲透氣底網。'
-              },
-              {
-                step: '04',
                 title: '現場沙龍精剪銜接',
                 desc: '特約資深美髮設計師依臉型現場修剪瀏海、層次比例，與原生髮天衣無縫自然揉合。'
               },
               {
-                step: '05',
+                step: '03',
                 title: '售後尊榮保固服務',
                 desc: '包含配戴洗護教學、專屬護理包，並享一年內免費修剪調整與補髮保固。'
               }
@@ -656,9 +646,9 @@ export default function WomensWigCatalog({
             <span className="inline-block bg-brand-500/20 text-brand-300 border border-brand-500/30 text-xs font-black px-3 py-1 rounded-full uppercase tracking-wider">
               Private Consultation
             </span>
-            <h3 className="text-2xl sm:text-3xl font-black tracking-tight">客製優雅不凡，找回柔亮自信秀髮</h3>
+            <h3 className="text-2xl sm:text-3xl font-black tracking-tight text-transparent bg-clip-text bg-gradient-to-r from-brand-200 via-brand-400 to-amber-200">客製優雅不凡，找回柔亮自信秀髮</h3>
             <p className="text-zinc-300 font-light text-xs sm:text-sm leading-relaxed">
-              大衛假髮全心呵護每位美麗精緻的女性。點擊下方按鈕加入官方 LINE 留言預約，由女性專員在台北/台中獨立 VIP 包廂為您一對一量身試戴。
+              大衛假髮全心呵護每位美麗精緻的女性。點擊下方按鈕加入官方 LINE 留言預約，由女性專員為您一對一量身試戴。
             </p>
             <div className="flex flex-col sm:flex-row justify-center gap-4 pt-2">
               <a 
@@ -668,7 +658,7 @@ export default function WomensWigCatalog({
                 className="bg-[#06C755] hover:bg-[#05b34c] text-white px-8 py-4 rounded-xl text-sm font-black transition-all flex items-center justify-center gap-2 shadow-lg cursor-pointer"
               >
                 <MessageCircle className="w-5 h-5" /> 
-                預約一對一私密包廂一小時免費諮詢
+                預約一對一免費諮詢
               </a>
               <button 
                 onClick={onBack}

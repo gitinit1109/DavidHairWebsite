@@ -41,87 +41,433 @@ interface OnlineStoreProps {
   onAddToCart: (product: StoreProduct, options: { size: string; color: string; customPrice?: number }) => void;
 }
 
-// Default high-quality accessories & default store items
+// Default accessories & consumables — sourced from davidhair.com.tw's real product
+// catalog (https://www.davidhair.com.tw/h/Product?key=p5m4u&cateId=86894) rather than
+// placeholder items, so prices/images reflect what the store actually carries.
+const DAVIDHAIR_IMG_BASE = 'https://www.davidhair.com.tw';
+
 const DEFAULT_STORE_PRODUCTS: StoreProduct[] = [
+  // --- 假髮膠帶 ---
   {
-    id: 'acc-walker-tape-options',
-    title: '【熱銷專區 WALKER TAPE】美國原廠假髮雙面膠帶 (自選種類/寬度/長度)',
+    id: 'acc-tape-walker-36y-multicolor',
+    title: '【36碼專區 WALKER TAPE】紅膠 白膠 紫膠 藍膠 綠膠 NO-SHINE 美國原廠假髮膠帶',
     category: 'accessories',
-    categoryLabel: '頂級耗材配品',
-    price: 350,
-    priceMax: 1200,
-    imgUrl: 'https://images.unsplash.com/photo-1585238342024-78d387f4a707?auto=format&fit=crop&q=80&w=600&h=600',
-    description: '美國進口假髮專用膠帶大廠 Walker Tape 官方正品。提供多種膠帶款式（紅膠、白膠、紫膠、藍膠、綠膠、No-Shine 無光澤），以及多種常用寬度與長度規格，滿足不同網底及配戴時間的需求。',
-    tag: '美國原廠進口',
-    customOptions: [
-      {
-        name: '膠帶種類',
-        choices: [
-          { label: '紅膠 (Sensi-Tak) - 易清理/低致敏', priceModifier: 0 },
-          { label: '藍膠 (Lace Front) - 頂級強效/超薄服貼', priceModifier: 150 },
-          { label: '白膠 (Ultra Hold) - 防水防油/超強黏力', priceModifier: 180 },
-          { label: '紫膠 (Walker Signature) - 薄透無感/親膚安全', priceModifier: 200 },
-          { label: '綠膠 (No-Shine Extension) - 低致敏/霧面微光', priceModifier: 100 },
-          { label: 'No-Shine 經典無光澤 - 隱形啞光/不反光', priceModifier: 120 }
-        ]
-      },
-      {
-        name: '膠帶寬度',
-        choices: [
-          { label: '1/2 吋 (1.27 cm) - 細窄款', priceModifier: 0 },
-          { label: '3/4 吋 (1.90 cm) - 標準款', priceModifier: 80 },
-          { label: '1 吋 (2.54 cm) - 寬幅加強款', priceModifier: 150 }
-        ]
-      },
-      {
-        name: '膠帶長度',
-        choices: [
-          { label: '3 碼 (3 Yards) - 體驗包', priceModifier: 0 },
-          { label: '12 碼 (12 Yards) - 實惠裝', priceModifier: 250 },
-          { label: '36 碼 (36 Yards) - 大容量省錢專區', priceModifier: 500 }
-        ]
-      }
-    ]
+    categoryLabel: '假髮膠帶',
+    price: 850,
+    priceMax: 2000,
+    imgUrl: `${DAVIDHAIR_IMG_BASE}/Uploads/Product/s/38636/38636_430053_bmv077ar.jpg`,
+    description: '美國 Walker Tape 原廠 36 碼大容量裝，多種膠色可選，適合長期配戴、需要頻繁更換膠帶的髮友，換算下來最划算。',
+    tag: '美國原廠進口・大容量裝'
   },
   {
-    id: 'acc-walker-tape',
-    title: '美國進口 Walker Tape 藍帶強效雙面膠 (頂級長效)',
+    id: 'acc-tape-ultra-hold',
+    title: '【沃克白膠 ULTRA HOLD】美國原廠假髮膠帶',
     category: 'accessories',
-    categoryLabel: '頂級耗材配品',
-    price: 480,
-    imgUrl: 'https://images.unsplash.com/photo-1585238342024-78d387f4a707?auto=format&fit=crop&q=80&w=600&h=600',
-    description: '美國第一品牌 Walker Tape 官方正品。專為真人髮片網底設計，防汗防水，黏性可維持 2-4 週，低致敏親膚材質，無感無重力服貼。',
-    tag: '運動防汗首選'
-  },
-  {
-    id: 'acc-c22-solvent',
-    title: 'C-22 柑橘極速除膠噴霧 (專業沙龍專用)',
-    category: 'accessories',
-    categoryLabel: '頂級耗材配品',
-    price: 680,
-    imgUrl: 'https://images.unsplash.com/photo-1556228453-efd6c1ff04f6?auto=format&fit=crop&q=80&w=600&h=600',
-    description: '天然柑橘配方，高效溫和，不傷網底與髮絲。能在一分鐘內快速分解殘膠，氣味芬芳清爽，清水一沖即淨，新手清膠神器。',
-    tag: '溫和速效除膠'
-  },
-  {
-    id: 'acc-wig-stand',
-    title: '可折疊防變形假髮支撐架 (亮銀尊榮款)',
-    category: 'accessories',
-    categoryLabel: '收納保養器具',
-    price: 320,
-    imgUrl: 'https://images.unsplash.com/photo-1596462502278-27bfdc403348?auto=format&fit=crop&q=80&w=600&h=600',
-    description: '專利懸空支撐設計，防止手工髮片長時間放置導致底網變形。通風透氣，洗髮後晾乾必備，折疊收納極省空間。',
-    tag: '網底防護專家'
-  },
-  {
-    id: 'acc-care-comb',
-    title: '大衛哥特製防靜電排骨梳 (真髮不打結)',
-    category: 'accessories',
-    categoryLabel: '收納保養器具',
+    categoryLabel: '假髮膠帶',
     price: 250,
-    imgUrl: 'https://images.unsplash.com/photo-1590156546746-c22224b6931d?auto=format&fit=crop&q=80&w=600&h=600',
-    description: '高回彈柔軟圓頭鋼齒，絕不刮傷絲綢蠶絲底網。寬齒防靜電設計，能輕鬆梳開微捲度與髮尾，長效維持假髮蓬鬆弧度。',
-    tag: '真髮專用防打結'
+    priceMax: 900,
+    imgUrl: `${DAVIDHAIR_IMG_BASE}/Uploads/Product/s/38636/38636_430054_iai59i5y.jpg`,
+    description: '防水防油、超強黏力，適合運動流汗或需要長效牢固的配戴需求。',
+    tag: '超強黏力'
+  },
+  {
+    id: 'acc-tape-walker-signature',
+    title: '【二代白膠 WALKER SIGNATURE TAPE】美國原廠假髮膠帶',
+    category: 'accessories',
+    categoryLabel: '假髮膠帶',
+    price: 300,
+    priceMax: 1100,
+    imgUrl: `${DAVIDHAIR_IMG_BASE}/Uploads/Product/s/38636/38636_450587_f9687v80.jpg`,
+    description: 'Walker Tape 二代升級配方白膠，黏性與親膚度皆有提升，日常配戴首選。',
+    tag: '二代升級配方'
+  },
+  {
+    id: 'acc-tape-signature-sensi-tak',
+    title: '【二代紅膠 WALKER SIGNATURE SENSI-TAK SELECT】美國原廠假髮膠帶',
+    category: 'accessories',
+    categoryLabel: '假髮膠帶',
+    price: 220,
+    priceMax: 620,
+    imgUrl: `${DAVIDHAIR_IMG_BASE}/Uploads/Product/s/38636/38636_450559_5132suji.jpg`,
+    description: '低致敏配方，好撕好清理，適合敏感頭皮日常配戴使用。',
+    tag: '低致敏・好清理'
+  },
+  {
+    id: 'acc-tape-extenda-bond-plus',
+    title: '【打孔藍膠 EXTENDA-BOND PLUS】打孔膠 美國原廠假髮膠帶',
+    category: 'accessories',
+    categoryLabel: '假髮膠帶',
+    price: 350,
+    imgUrl: `${DAVIDHAIR_IMG_BASE}/Uploads/Product/s/38636/38636_450754_afjvri4j.jpg`,
+    description: '打孔設計加強透氣與貼合度，適合蕾絲網底、追求隱形無感邊緣的髮友。',
+    tag: '打孔透氣款'
+  },
+  {
+    id: 'acc-tape-sensi-tak',
+    title: '【沃克紅膠 SENSI-TAK】美國原廠假髮膠帶',
+    category: 'accessories',
+    categoryLabel: '假髮膠帶',
+    price: 185,
+    priceMax: 600,
+    imgUrl: `${DAVIDHAIR_IMG_BASE}/Uploads/Product/s/38636/38636_447310_z762nvj1.jpg`,
+    description: 'Walker Tape 熱銷經典紅膠，易清理、低致敏，新手入門首選膠帶。',
+    tag: '熱銷經典款'
+  },
+  {
+    id: 'acc-tape-base-tape',
+    title: '【單面打底膠 BASE TAPE】蕾絲網底打底膠 美國原廠假髮膠帶',
+    category: 'accessories',
+    categoryLabel: '假髮膠帶',
+    price: 245,
+    imgUrl: `${DAVIDHAIR_IMG_BASE}/Uploads/Product/s/38636/38636_450606_he7qfcj8.jpg`,
+    description: '單面設計專為蕾絲網底打底使用，加強邊緣服貼、延長配戴穩固度。',
+    tag: '蕾絲網底專用'
+  },
+  {
+    id: 'acc-tape-lace-front',
+    title: '【沃克藍膠 LACE FRONT】美國原廠假髮膠帶',
+    category: 'accessories',
+    categoryLabel: '假髮膠帶',
+    price: 280,
+    priceMax: 850,
+    imgUrl: `${DAVIDHAIR_IMG_BASE}/Uploads/Product/s/38636/38636_447302_ew2avegi.jpg`,
+    description: '頂級強效、超薄服貼，蕾絲髮際線配戴的熱門選擇。',
+    tag: '頂級強效'
+  },
+  {
+    id: 'acc-tape-no-shine',
+    title: '【低反光膠 No-Shine】啞光膠 美國原廠假髮膠帶',
+    category: 'accessories',
+    categoryLabel: '假髮膠帶',
+    price: 290,
+    priceMax: 990,
+    imgUrl: `${DAVIDHAIR_IMG_BASE}/Uploads/Product/s/38636/38636_450635_rawvnfg2.jpg`,
+    description: '啞光低反光配方，近距離也不易反光，追求極致隱形效果的首選。',
+    tag: '隱形啞光'
+  },
+  {
+    id: 'acc-tape-super-stick',
+    title: '【沃克紫膠 SUPER STICK】美國原廠假髮膠帶',
+    category: 'accessories',
+    categoryLabel: '假髮膠帶',
+    price: 210,
+    priceMax: 650,
+    imgUrl: `${DAVIDHAIR_IMG_BASE}/Uploads/Product/s/38636/38636_431026_fm2na586.jpg`,
+    description: '薄透無感、親膚安全，兼顧牢固與配戴舒適度的平衡款。',
+    tag: '薄透無感'
+  },
+  {
+    id: 'acc-tape-1522-clear',
+    title: '【1522日用膠 WALKERTAPE 1522clear】美國原廠假髮膠帶 敏感頭皮專用',
+    category: 'accessories',
+    categoryLabel: '假髮膠帶',
+    price: 220,
+    priceMax: 470,
+    imgUrl: `${DAVIDHAIR_IMG_BASE}/Uploads/Product/s/38636/38636_450596_vc4rs5nf.jpg`,
+    description: '敏感頭皮專用配方，日常配戴溫和不刺激。',
+    tag: '敏感頭皮專用'
+  },
+  {
+    id: 'acc-tape-pro-flex-ii',
+    title: '【強效膠帶 Pro-Flex II】敏感頭皮專用 美國原廠假髮膠帶',
+    category: 'accessories',
+    categoryLabel: '假髮膠帶',
+    price: 360,
+    priceMax: 850,
+    imgUrl: `${DAVIDHAIR_IMG_BASE}/Uploads/Product/s/38636/38636_450648_kpzz0j4x.jpg`,
+    description: '強效黏著搭配敏感頭皮配方，兼顧牢固度與親膚舒適。',
+    tag: '強效敏感肌適用'
+  },
+  {
+    id: 'acc-tape-natural-hold',
+    title: '【沃克棕膠 Natural Hold】蕾絲網底專用打底膠 美國原廠假髮膠帶',
+    category: 'accessories',
+    categoryLabel: '假髮膠帶',
+    price: 230,
+    priceMax: 700,
+    imgUrl: `${DAVIDHAIR_IMG_BASE}/Uploads/Product/s/38636/38636_450599_fge33t0c.jpg`,
+    description: '棕色膠帶更貼近自然膚色，蕾絲網底打底使用不易顯色。',
+    tag: '蕾絲網底專用'
+  },
+  {
+    id: 'acc-tape-vapon-clear',
+    title: '【日用膠 VAPON TOPSTICK Clear Tape】敏感頭皮專用 VAPON原廠假髮膠帶',
+    category: 'accessories',
+    categoryLabel: '假髮膠帶',
+    price: 220,
+    priceMax: 980,
+    imgUrl: `${DAVIDHAIR_IMG_BASE}/Uploads/Product/s/38636/38636_450699_nixntd3a.jpg`,
+    description: 'VAPON 原廠日用款，敏感頭皮也能安心天天配戴。',
+    tag: 'VAPON原廠・日用款'
+  },
+  {
+    id: 'acc-tape-vapon-plus',
+    title: '【強效膠帶 VAPON Topstick Plus】VAPON原廠假髮膠帶',
+    category: 'accessories',
+    categoryLabel: '假髮膠帶',
+    price: 320,
+    imgUrl: `${DAVIDHAIR_IMG_BASE}/Uploads/Product/s/38636/38636_450701_3t6xn4xx.jpg`,
+    description: 'VAPON 原廠強效版本，需要更持久牢固度時的升級選擇。',
+    tag: 'VAPON原廠・強效版'
+  },
+  {
+    id: 'acc-tape-vapon-lacefx',
+    title: '【蕾絲膠 VAPON LaceFX】蕾絲網底專用膠 低反光膠帶 VAPON原廠假髮膠帶',
+    category: 'accessories',
+    categoryLabel: '假髮膠帶',
+    price: 250,
+    imgUrl: `${DAVIDHAIR_IMG_BASE}/Uploads/Product/s/38636/38636_450700_3dmaycjq.jpg`,
+    description: 'VAPON 原廠蕾絲網底專用膠，低反光設計貼合更隱形。',
+    tag: '蕾絲網底專用'
+  },
+
+  // --- 假髮膠片 ---
+  {
+    id: 'acc-patch-walker-signature-36',
+    title: '【二代白膠膠片 WALKER SIGNATURE TAPE-36片】美國原廠假髮膠帶',
+    category: 'accessories',
+    categoryLabel: '假髮膠片',
+    price: 350,
+    imgUrl: `${DAVIDHAIR_IMG_BASE}/Uploads/Product/s/38636/38636_451139_qqrjk16m.jpg`,
+    description: '預先裁切好的膠片款式，免剪裁即可直接使用，方便快速。',
+    tag: '免裁切・即用款'
+  },
+  {
+    id: 'acc-patch-sensi-tak-36',
+    title: '【紅膠膠片 Sensi-Tak-36片】美國沃克原廠假髮膠片',
+    category: 'accessories',
+    categoryLabel: '假髮膠片',
+    price: 230,
+    priceMax: 250,
+    imgUrl: `${DAVIDHAIR_IMG_BASE}/Uploads/Product/s/38636/38636_450906_3ay9zawe.jpg`,
+    description: '經典紅膠裁切成片狀，好撕好清理，新手最容易上手的膠片款式。',
+    tag: '新手好上手'
+  },
+  {
+    id: 'acc-patch-natural-hold-36',
+    title: '【棕膠膠片 Natural Hold-36片】美國沃克原廠假髮膠帶 蕾絲網底專用打底膠',
+    category: 'accessories',
+    categoryLabel: '假髮膠片',
+    price: 230,
+    priceMax: 240,
+    imgUrl: `${DAVIDHAIR_IMG_BASE}/Uploads/Product/s/38636/38636_450910_2g7ywpia.jpg`,
+    description: '棕色膠片貼近膚色，蕾絲網底打底使用不易顯色破綻。',
+    tag: '蕾絲網底專用'
+  },
+  {
+    id: 'acc-patch-duo-tac-36',
+    title: '【雙效膠片 Duo-Tac-36片】美國原廠假髮膠帶',
+    category: 'accessories',
+    categoryLabel: '假髮膠片',
+    price: 285,
+    priceMax: 300,
+    imgUrl: `${DAVIDHAIR_IMG_BASE}/Uploads/Product/s/38636/38636_451250_tb379pvg.jpg`,
+    description: '雙面雙效設計，兼顧黏著力與親膚舒適的均衡款膠片。',
+    tag: '雙效均衡款'
+  },
+  {
+    id: 'acc-patch-ultrahold-36',
+    title: '【白膠膠片 UltraHold-36片】美國原廠假髮膠帶',
+    category: 'accessories',
+    categoryLabel: '假髮膠片',
+    price: 280,
+    priceMax: 330,
+    imgUrl: `${DAVIDHAIR_IMG_BASE}/Uploads/Product/s/38636/38636_451243_zdt51yfh.jpg`,
+    description: '防水防油、超強黏力的白膠裁切片，適合運動流汗場合。',
+    tag: '超強黏力'
+  },
+  {
+    id: 'acc-patch-lace-front-36',
+    title: '【藍膠膠片 LACE FRONT-36片】美國原廠假髮膠帶',
+    category: 'accessories',
+    categoryLabel: '假髮膠片',
+    price: 300,
+    priceMax: 320,
+    imgUrl: `${DAVIDHAIR_IMG_BASE}/Uploads/Product/s/38636/38636_451195_d2dz197z.jpg`,
+    description: '頂級強效藍膠裁切成片，蕾絲髮際線配戴的熱門選擇。',
+    tag: '頂級強效'
+  },
+  {
+    id: 'acc-patch-signature-sensi-tak-36',
+    title: '【二代紅膠膠片 WALKER SIGNATURE SENSI-TAK SELECT-36片】美國原廠假髮膠帶',
+    category: 'accessories',
+    categoryLabel: '假髮膠片',
+    price: 250,
+    priceMax: 280,
+    imgUrl: `${DAVIDHAIR_IMG_BASE}/Uploads/Product/s/38636/38636_451239_kd4edua1.jpg`,
+    description: '二代升級配方紅膠片，低致敏好清理，日常配戴首選。',
+    tag: '低致敏配方'
+  },
+  {
+    id: 'acc-patch-extenda-bond-plus',
+    title: '【打孔藍膠片 EXTENDA-BOND PLUS-2款任選】打孔膠 美國原廠假髮膠帶',
+    category: 'accessories',
+    categoryLabel: '假髮膠片',
+    price: 75,
+    priceMax: 350,
+    imgUrl: `${DAVIDHAIR_IMG_BASE}/Uploads/Product/s/38636/38636_451196_40dx3wtp.jpg`,
+    description: '打孔設計加強透氣度，提供 2 款規格任選，依需求彈性選購。',
+    tag: '打孔透氣・2款任選'
+  },
+  {
+    id: 'acc-patch-super-stick-36',
+    title: '【SUPER STICK紫膠膠片36片】美國沃克原廠假髮膠片',
+    category: 'accessories',
+    categoryLabel: '假髮膠片',
+    price: 250,
+    priceMax: 265,
+    imgUrl: `${DAVIDHAIR_IMG_BASE}/Uploads/Product/s/38636/38636_450920_my51nf8w.jpg`,
+    description: '薄透無感紫膠裁切成片，兼顧牢固與舒適度的平衡款。',
+    tag: '薄透無感'
+  },
+  {
+    id: 'acc-patch-noshine-36',
+    title: '【低反光膠片 NOSHINE-36片】美國沃克原廠假髮膠片',
+    category: 'accessories',
+    categoryLabel: '假髮膠片',
+    price: 330,
+    priceMax: 350,
+    imgUrl: `${DAVIDHAIR_IMG_BASE}/Uploads/Product/s/38636/38636_450921_fwjvmiiw.jpg`,
+    description: '啞光低反光配方裁切成片，追求極致隱形效果的首選。',
+    tag: '隱形啞光'
+  },
+  {
+    id: 'acc-patch-1522clear-36',
+    title: '【日用膠片 1522clear-36片】敏感頭皮專用 WALKERTAPE美國原廠假髮膠帶',
+    category: 'accessories',
+    categoryLabel: '假髮膠片',
+    price: 230,
+    imgUrl: `${DAVIDHAIR_IMG_BASE}/Uploads/Product/s/38636/38636_451126_yksbw5fp.jpg`,
+    description: '敏感頭皮專用日用款裁切成片，天天配戴也溫和不刺激。',
+    tag: '敏感頭皮專用'
+  },
+  {
+    id: 'acc-patch-lacefx-25',
+    title: '【蕾絲膠片 Lace FX-25片盒裝】蕾絲網底專用 VAPON原廠假髮膠帶',
+    category: 'accessories',
+    categoryLabel: '假髮膠片',
+    price: 280,
+    imgUrl: `${DAVIDHAIR_IMG_BASE}/Uploads/Product/s/38636/38636_450911_2rw8wk4u.jpg`,
+    description: 'VAPON 原廠蕾絲網底專用膠片，25 片盒裝方便攜帶收納。',
+    tag: '蕾絲網底專用・盒裝'
+  },
+
+  // --- 假髮膠水 ---
+  {
+    id: 'acc-glue-liquid-adhesive',
+    title: '【假髮專用液態膠水 LIQUID ADHESIVES】WALKER原廠假髮專用膠水',
+    category: 'accessories',
+    categoryLabel: '假髮膠水',
+    price: 360,
+    priceMax: 1150,
+    imgUrl: `${DAVIDHAIR_IMG_BASE}/Uploads/Product/s/38636/38636_451513_gi70cf69.jpg`,
+    description: '超強黏性液態膠水，防水效果佳，夏天游泳下水也不必擔心脫落。',
+    tag: '超強黏性・防水'
+  },
+  {
+    id: 'acc-glue-just-rite',
+    title: '【緩衝劑 Just-Rite-118ml】WALKER TAPE原廠進口',
+    category: 'accessories',
+    categoryLabel: '假髮膠水',
+    price: 450,
+    imgUrl: `${DAVIDHAIR_IMG_BASE}/Uploads/Product/s/38636/38636_451506_7wf874yx.jpg`,
+    description: '搭配液態膠水使用的緩衝劑，調整黏著效果與延長使用時間。',
+    tag: 'WALKER TAPE原廠進口'
+  },
+  {
+    id: 'acc-glue-max-hold-sport',
+    title: '【髮片助黏劑 Max Hold Sport-41ml】WALKER TAPE原廠進口',
+    category: 'accessories',
+    categoryLabel: '假髮膠水',
+    price: 500,
+    imgUrl: `${DAVIDHAIR_IMG_BASE}/Uploads/Product/s/38636/38636_451505_k6p5njsy.jpg`,
+    description: '運動型強力助黏劑，適合劇烈運動、大量流汗場合加強黏著。',
+    tag: '運動型強力款'
+  },
+  {
+    id: 'acc-glue-gw14-protein',
+    title: '【GW1.4蛋白膠 Walker Great White-41ml】Walker沃克原廠 隱形假髮專用膠',
+    category: 'accessories',
+    categoryLabel: '假髮膠水',
+    price: 950,
+    imgUrl: `${DAVIDHAIR_IMG_BASE}/Uploads/Product/s/38636/38636_451504_yu4k832z.jpg`,
+    description: '蛋白配方專為隱形假髮設計，黏著自然且不易泛白反光。',
+    tag: '隱形假髮專用'
+  },
+
+  // --- 卸膠專區 ---
+  {
+    id: 'acc-remover-great-white',
+    title: '【H2GO蛋白膠專用拆髮劑 Great White Remover-118ml】Walker沃克原廠 蛋白膠專用卸除劑',
+    category: 'accessories',
+    categoryLabel: '卸膠專區',
+    price: 450,
+    imgUrl: `${DAVIDHAIR_IMG_BASE}/Uploads/Product/s/38636/38636_451500_fntmib7v.jpg`,
+    description: '專為蛋白膠配方設計的卸除劑，溫和分解殘膠，不傷頭皮與髮絲。',
+    tag: '蛋白膠專用'
+  },
+  {
+    id: 'acc-remover-rapid-release',
+    title: '【強效卸膠液 RAPID RELEASE-354ml】除膠噴霧 沃克原廠假髮膠帶卸膠液',
+    category: 'accessories',
+    categoryLabel: '卸膠專區',
+    price: 850,
+    imgUrl: `${DAVIDHAIR_IMG_BASE}/Uploads/Product/s/38636/38636_451337_gjnc7nnj.jpg`,
+    description: '噴霧式強效卸膠液，大容量裝適合門市/沙龍高頻使用。',
+    tag: '大容量噴霧裝'
+  },
+  {
+    id: 'acc-remover-lace-release',
+    title: '【蕾絲網底拆髮劑 Walker Lace Release-118ml】假髮殘膠卸除',
+    category: 'accessories',
+    categoryLabel: '卸膠專區',
+    price: 500,
+    imgUrl: `${DAVIDHAIR_IMG_BASE}/Uploads/Product/s/38636/38636_451270_fx35n4qz.jpg`,
+    description: '專為蕾絲網底設計的溫和卸膠配方，卸除殘膠同時保護細緻網底。',
+    tag: '蕾絲網底專用'
+  },
+  {
+    id: 'acc-remover-s3-sensitive',
+    title: '【S3™卸膠液 SENSITIVE SKIN SOLVENT-118ml】敏感頭皮專用 假髮殘膠卸除',
+    category: 'accessories',
+    categoryLabel: '卸膠專區',
+    price: 500,
+    imgUrl: `${DAVIDHAIR_IMG_BASE}/Uploads/Product/s/38636/38636_451269_67myqpxa.jpg`,
+    description: '敏感頭皮專用溫和配方，卸除殘膠時不刺激、不泛紅。',
+    tag: '敏感頭皮專用'
+  },
+  {
+    id: 'acc-remover-signature',
+    title: '【沃克卸膠液 WALKER SIGNATURE REMOVER-118ml】敏感頭皮專用',
+    category: 'accessories',
+    categoryLabel: '卸膠專區',
+    price: 750,
+    imgUrl: `${DAVIDHAIR_IMG_BASE}/Uploads/Product/s/38636/38636_451268_kxx1pwnn.jpg`,
+    description: 'Walker 原廠敏感頭皮專用配方卸膠液，溫和有效不傷頭皮。',
+    tag: 'Walker原廠・敏感肌適用'
+  },
+  {
+    id: 'acc-remover-c22',
+    title: '【C-22卸膠液 C-22 SOLVENT】Walker銷量第一假髮膠帶卸除液',
+    category: 'accessories',
+    categoryLabel: '卸膠專區',
+    price: 450,
+    priceMax: 950,
+    imgUrl: `${DAVIDHAIR_IMG_BASE}/Uploads/Product/s/38636/38636_451266_3ysxnu9w.jpg`,
+    description: 'Walker 銷量第一的柑橘配方卸膠液，一分鐘快速分解殘膠，清水沖淨無殘留。',
+    tag: '銷量第一・柑橘配方'
+  },
+
+  // --- 日常保養 ---
+  {
+    id: 'acc-care-knot-sealer',
+    title: '【假髮網底保養劑 Top-Loc KNOT SEALER-118ml】WALKER TAPE原廠進口免洗假髮網底保養劑',
+    category: 'accessories',
+    categoryLabel: '日常保養',
+    price: 870,
+    imgUrl: `${DAVIDHAIR_IMG_BASE}/Uploads/Product/s/38636/38636_452034_ntzxem9s.jpg`,
+    description: '免洗型網底保養劑，定期使用可延長底網彈性與使用壽命。',
+    tag: '免洗網底保養'
   }
 ];
 
@@ -135,6 +481,9 @@ export default function OnlineStore({
 }: OnlineStoreProps) {
   const [products, setProducts] = useState<StoreProduct[]>([]);
   const [activeFilter, setActiveFilter] = useState<'all' | 'mens' | 'womens' | 'chemo' | 'accessories'>('all');
+  // Sub-filter within the "耗材與保養" tab (假髮膠帶/膠片/膠水/卸膠/保養) — with dozens
+  // of real consumable SKUs now in that one tab, a flat list is hard to browse.
+  const [accessorySubFilter, setAccessorySubFilter] = useState<string>('all');
   const [wigsLoading, setWigsLoading] = useState(true);
   
   // Dialog configuration
@@ -605,9 +954,17 @@ export default function OnlineStore({
   };
 
   const filteredProducts = products.filter(p => {
-    if (activeFilter === 'all') return true;
-    return p.category === activeFilter;
+    if (activeFilter !== 'all' && p.category !== activeFilter) return false;
+    if (activeFilter === 'accessories' && accessorySubFilter !== 'all' && p.categoryLabel !== accessorySubFilter) return false;
+    return true;
   });
+
+  // Sub-category pills shown only within the accessories tab, derived from
+  // whatever categoryLabel values actually exist (so admin-added categories
+  // show up automatically without needing another hardcoded list).
+  const accessorySubCategories = Array.from(
+    new Set(products.filter(p => p.category === 'accessories').map(p => p.categoryLabel))
+  );
 
   const triggerAddToCart = (product: StoreProduct) => {
     let finalSize = selectedSize;
@@ -704,10 +1061,10 @@ export default function OnlineStore({
             ].map(tab => (
               <button
                 key={tab.id}
-                onClick={() => setActiveFilter(tab.id as any)}
+                onClick={() => { setActiveFilter(tab.id as any); setAccessorySubFilter('all'); }}
                 className={`px-4 py-2 rounded-xl text-xs sm:text-sm font-bold transition-all cursor-pointer ${
-                  activeFilter === tab.id 
-                    ? 'bg-[#8e7a64] text-white shadow-md' 
+                  activeFilter === tab.id
+                    ? 'bg-[#8e7a64] text-white shadow-md'
                     : 'bg-white border border-zinc-200 text-zinc-600 hover:bg-zinc-100'
                 }`}
               >
@@ -715,11 +1072,41 @@ export default function OnlineStore({
               </button>
             ))}
           </div>
-          
+
           <div className="text-xs text-zinc-500 font-extrabold">
             共顯示 <span className="text-[#8e7a64] font-black text-sm">{filteredProducts.length}</span> 款商品
           </div>
         </div>
+
+        {/* Accessories sub-filter — only relevant once inside 耗材與保養, which now
+            holds many real consumable SKUs across several sub-categories. */}
+        {activeFilter === 'accessories' && accessorySubCategories.length > 1 && (
+          <div className="flex flex-wrap gap-2 -mt-4 mb-8">
+            <button
+              onClick={() => setAccessorySubFilter('all')}
+              className={`px-3.5 py-1.5 rounded-lg text-[11px] sm:text-xs font-bold transition-all cursor-pointer ${
+                accessorySubFilter === 'all'
+                  ? 'bg-zinc-900 text-white'
+                  : 'bg-zinc-100 text-zinc-600 hover:bg-zinc-200'
+              }`}
+            >
+              全部類別
+            </button>
+            {accessorySubCategories.map(label => (
+              <button
+                key={label}
+                onClick={() => setAccessorySubFilter(label)}
+                className={`px-3.5 py-1.5 rounded-lg text-[11px] sm:text-xs font-bold transition-all cursor-pointer ${
+                  accessorySubFilter === label
+                    ? 'bg-zinc-900 text-white'
+                    : 'bg-zinc-100 text-zinc-600 hover:bg-zinc-200'
+                }`}
+              >
+                {label}
+              </button>
+            ))}
+          </div>
+        )}
 
         {/* Products Grid */}
         {wigsLoading ? (

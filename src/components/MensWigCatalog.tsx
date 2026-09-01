@@ -703,17 +703,17 @@ export default function MensWigCatalog({
               {
                 step: '02',
                 title: '頭型精確測量',
-                desc: '親臨門市，於獨立隱密包廂，使用醫學級石膏精確測量脫髮區弧面度與原毛流流向，取樣原生髮色樣。'
+                desc: '親臨門市，於獨立隱密包廂，使用手工量制頭模。'
               },
               {
                 step: '03',
                 title: '純手工針製精製',
-                desc: '資料送至核心織髮室，由多年熟練職人純手工在超薄微孔網上「逐針」按照生長規律排勾編織，歷時4-6週匠心精製。'
+                desc: '資料送至核心織髮室，由多年熟練職人純手工在超薄微孔網上「逐針」按照生長規律排勾編織。'
               },
               {
                 step: '04',
                 title: '專業設計師精緻精修',
-                desc: '核心網底製成後預約到店，由大衛哥協助底型最後調校，安排合作的專業優質美髮師直接為您多層次「無痕漸變修剪」，讓假髮邊緣與原生髮天衣無縫銜接。'
+                desc: '安排店內的專業優質設計師直接為您提供「專屬修剪服務」，讓假髮邊緣與原生髮天衣無縫銜接。'
               },
               {
                 step: '05',
@@ -744,7 +744,7 @@ export default function MensWigCatalog({
           <div className="relative z-10 max-w-2xl mx-auto space-y-6">
             <h3 className="text-3xl md:text-4xl font-extrabold tracking-tight">有頂上問題？直接加 LINE 即刻解決</h3>
             <p className="text-lg text-zinc-950/80 font-semibold leading-relaxed">
-              假髮水很深，我們真心對待每位髮友。如果您不知道如何測量尺寸，或者不確定哪一款長度適合您，別驚慌！我們全預約制一對一客製化專人服務能為您解答所有困擾。
+              假髮水很深，我們真心對待每位髮友。我們採全預約制一對一客製化專人服務能為您解答所有困擾。
             </p>
             <div className="flex flex-wrap justify-center gap-4 pt-4">
               <a 

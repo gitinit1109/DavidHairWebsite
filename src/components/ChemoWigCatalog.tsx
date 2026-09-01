@@ -14,20 +14,20 @@ import EditableText from './EditableText';
 const DEFAULT_CHEMO_PRODUCTS: ChemoWigProduct[] = [
   {
     id: 'chemo-silk-deluxe-full',
-    title: '「醫療防敏・純蠶絲全頭手工假髮」 (Medical Silk Deluxe Full Wig)',
+    title: '「醫療防敏・純醫療網全頭手工假髮」 (Medical Silk Deluxe Full Wig)',
     category: 'silk-comfort',
-    categoryLabel: '極緻蠶絲低敏',
+    categoryLabel: '極緻醫療網低敏',
     baseMaterial: 'double',
-    baseMaterialLabel: '雙層蠶絲透氣底網',
+    baseMaterialLabel: '雙層醫療網透氣底網',
     priceType: 'custom',
     tag: '極柔親膚・全頭手工・0%壓迫感',
-    description: '專為化療落髮及高度敏感頭皮研發。採用物理低敏天然桑蠶絲包覆底網，零化學膠水接觸，針針純手工單針遞針精織。觸感如雲朵般細緻，全天候維持透氣涼爽，無重力減壓設計讓脆弱頭皮安心呼吸。',
+    description: '專為化療落髮及高度敏感頭皮研發。採用物理低敏醫療網包覆底網，零化學膠水接觸，針針純手工單針遞針精織。觸感如雲朵般細緻，全天候維持透氣涼爽，無重力減壓設計讓脆弱頭皮安心呼吸。',
     breathability: 5,
     durability: 5,
     naturalness: 5,
     gentleness: 5,
     features: [
-      '100% 物理低敏感天然桑蠶絲親膚打底，零刺激不悶癢',
+      '100% 物理低敏感醫療網親膚打底，零刺激不悶癢',
       '純手工單根遞針勾織，呈現天生毛囊與自然頭皮血色',
       '100% Remy 特優級純淨少女真髮，自然柔順可自由吹整修剪',
       '3D 彈力微孔內網結構，全方位排汗透氣，炎夏配戴零負擔'
@@ -89,7 +89,7 @@ export default function ChemoWigCatalog({
 
   // Form States
   const [newTitle, setNewTitle] = useState('');
-  const [newCategoryLabel, setNewCategoryLabel] = useState('極緻蠶絲低防敏 (特柔親膚)');
+  const [newCategoryLabel, setNewCategoryLabel] = useState('極緻醫療網低防敏 (特柔親膚)');
   const [newBaseMaterial, setNewBaseMaterial] = useState('double');
   const [newBaseMaterialLabel, setNewBaseMaterialLabel] = useState('雙層');
   const [newPriceType, setNewPriceType] = useState<'custom' | 'ready'>('custom');
@@ -169,7 +169,7 @@ export default function ChemoWigCatalog({
           durability: Number(newDurability),
           naturalness: Number(newNaturalness),
           gentleness: Number(newGentleness),
-          features: featureArray.length > 0 ? featureArray : ['抗敏感無痕桑蠶絲親膚打底', '雙向微孔孔雀編排空氣流道', '100% 尊絕純淨 Remy 真髮絲'],
+          features: featureArray.length > 0 ? featureArray : ['抗敏感無痕醫療網親膚打底', '雙向微孔孔雀編排空氣流道', '100% 尊絕純淨 Remy 真髮絲'],
           stylingTips: newStylingTips || '洗頭時使用中性弱酸洗髮精，避免用力揉搓，平鋪陰乾。',
           bestFit: newBestFit || '面臨放射或化學治療引起的落髮者，及全頭禿或極度敏感頭皮人士。',
           lifeSpan: newLifeSpan
@@ -225,7 +225,7 @@ export default function ChemoWigCatalog({
 
   const uniqueCategories = useMemo(() => {
     const cats = new Map<string, string>();
-    cats.set('silk-comfort', '極緻蠶絲');
+    cats.set('silk-comfort', '極緻醫療網');
     cats.set('full-lace', '手工針織');
     cats.set('breathable-cap', '無痕排汗');
 
@@ -245,7 +245,7 @@ export default function ChemoWigCatalog({
     if (label.includes('生物') || label.includes('仿生') || label.includes('skin') || label.includes('膜') || label.includes('hybrid') || label.includes('矽膠') || mat.includes('skin') || mat.includes('hybrid')) {
       return 'skin';
     }
-    if (label.includes('雙層') || label.includes('double') || label.includes('蠶絲') || label.includes('silk') || mat.includes('silk') || mat.includes('double')) {
+    if (label.includes('雙層') || label.includes('double') || label.includes('醫療網') || label.includes('silk') || mat.includes('silk') || mat.includes('double')) {
       return 'double';
     }
     return 'single';
@@ -323,7 +323,7 @@ export default function ChemoWigCatalog({
             
             <EditableText
               idKey="chemo-banner-desc"
-              defaultText="專為面臨化療落髮、放射治療、全頭禿、斑禿及高度脆弱頭皮人士特設。100% 採用純淨真人髮絲與天然桑蠶絲親膚材料，針針純手工精密勾織，無重力減壓設計，我們以極致同理心為您守護抗癌時光的溫柔自信。"
+              defaultText="專為面臨化療落髮、放射治療、全頭禿、斑禿及高度脆弱頭皮人士特設。100% 採用純淨真人髮絲與醫療網等級親膚材料，針針純手工精密勾織，無重力減壓設計，我們以極致同理心為您守護抗癌時光的溫柔自信。"
               as="p"
               className="text-zinc-300 font-light text-base sm:text-lg md:text-xl leading-relaxed max-w-3xl"
               isAdmin={isAdmin}
@@ -338,7 +338,7 @@ export default function ChemoWigCatalog({
                 <Check className="w-3.5 h-3.5 text-brand-400" /> 100% 頂級真髮，可自由修剪吹整
               </span>
               <span className="bg-zinc-900/90 border border-zinc-800 px-3 py-1.5 rounded-lg flex items-center gap-1.5">
-                <Check className="w-3.5 h-3.5 text-brand-400" /> 物理低敏感桑蠶絲，極致親膚零刺激
+                <Check className="w-3.5 h-3.5 text-brand-400" /> 醫療網極致親膚零刺激
               </span>
               <span className="bg-zinc-900/90 border border-zinc-800 px-3 py-1.5 rounded-lg flex items-center gap-1.5">
                 <Check className="w-3.5 h-3.5 text-brand-400" /> 1 對 1 獨立 VIP 包廂隱密諮詢與陪伴
@@ -364,7 +364,7 @@ export default function ChemoWigCatalog({
                 醫療化療假髮・真人改造前後對比 (Before & After)
               </h2>
               <p className="text-zinc-600 text-sm sm:text-base font-normal leading-relaxed">
-                溫柔守護抗癌時光的自信與美麗。採用 100% 純淨優級真髮與雙層微孔桑蠶絲底網，全頭手工微雕，360° 透氣服貼零壓迫。
+                溫柔守護抗癌時光的自信與美麗。醫療網等級底網，全頭手工微雕，360° 透氣服貼零壓迫。
               </p>
             </div>
 
@@ -420,7 +420,7 @@ export default function ChemoWigCatalog({
                   {/* Bottom Information Overlay */}
                   <div className="absolute bottom-3 inset-x-3 sm:bottom-4 sm:inset-x-6 z-20 bg-zinc-950/90 backdrop-blur-md border border-brand-500/30 text-white rounded-2xl p-3 sm:p-4 flex flex-col sm:flex-row items-center justify-between gap-3 shadow-2xl">
                     <div className="text-xs sm:text-sm font-bold text-zinc-300 text-center sm:text-left">
-                      <span className="text-brand-400 font-black">【病友實證蛻變】</span> 100% 純淨真髮 ‧ 物理低敏蠶絲 ‧ 360° 舒適透氣零壓迫
+                      <span className="text-brand-400 font-black">【病友實證蛻變】</span> 100% 純淨真髮 ‧ 醫療網等級內網 ‧ 360° 舒適透氣零壓迫
                     </div>
                     <a
                       href="https://line.me/R/ti/p/@davidhair"
@@ -444,7 +444,7 @@ export default function ChemoWigCatalog({
                 <span className="text-[11px] text-zinc-600">柔順天然 ‧ 可吹整修剪</span>
               </div>
               <div className="p-3 bg-brand-50/40 rounded-2xl border border-brand-200/60">
-                <span className="block text-xs font-black text-brand-950">物理低敏桑蠶絲</span>
+                <span className="block text-xs font-black text-brand-950">醫療等級內網</span>
                 <span className="text-[11px] text-zinc-600">無毒無膠 ‧ 敏弱頭皮首選</span>
               </div>
               <div className="p-3 bg-brand-50/40 rounded-2xl border border-brand-200/60">
@@ -489,9 +489,9 @@ export default function ChemoWigCatalog({
             <div className="w-12 h-12 rounded-2xl bg-brand-500/10 text-brand-600 flex items-center justify-center font-black">
               <Feather className="w-6 h-6" />
             </div>
-            <h3 className="text-lg font-black text-zinc-900">物理低敏桑蠶絲親膚內網</h3>
+            <h3 className="text-lg font-black text-zinc-900">物理低敏醫療網親膚內網</h3>
             <p className="text-zinc-600 text-sm leading-relaxed">
-              天然桑蠶絲接觸面，零化學膠水接觸，給予敏感脆弱頭皮如絲綢般的溫柔包覆，高透氣立體微孔讓頭皮隨時自在呼吸。
+              醫療網接觸面，零化學膠水接觸，給予敏感脆弱頭皮如絲綢般的溫柔包覆，高透氣立體微孔讓頭皮隨時自在呼吸。
             </p>
           </div>
 
@@ -551,37 +551,32 @@ export default function ChemoWigCatalog({
               Medical Care Process
             </span>
             <h2 className="text-3xl sm:text-4xl font-black tracking-tight text-white">
-              醫療化療假髮・五大暖心照護流程
+              醫療化療假髮・四大暖心照護流程
             </h2>
             <p className="text-zinc-400 font-light text-sm sm:text-base leading-relaxed">
-              從化療前原生髮型記錄、3D 頭型精準量模、純手工親膚勾織到現場沙龍精剪，提供全方位的專業與溫暖照護。
+              從化療前原生髮型記錄、純手工親膚勾織到現場沙龍精剪，提供全方位的專業與溫暖照護。
             </p>
           </div>
 
-          <div className="relative z-10 grid md:grid-cols-5 gap-6">
+          <div className="relative z-10 grid md:grid-cols-4 gap-6">
             {[
               {
                 step: '01',
                 title: '療程前預約諮詢',
-                desc: '化療開始前先記錄原本髮流與髮色，安排獨立 VIP 隱密包廂預先挑選。'
+                desc: '化療前可先預約一對一配戴挑選。'
               },
               {
                 step: '02',
-                title: '3D頭型精準量模',
-                desc: '針對頭骨弧度、頭圍尺寸與耳後弧線進行 1:1 精密量測，確保服貼不滑動。'
+                title: '純手工親膚勾織',
+                desc: '採用 100% 純淨真髮與醫療網底網，針針單針手工勾織，零壓迫感。'
               },
               {
                 step: '03',
-                title: '純手工親膚勾織',
-                desc: '採用 100% 純淨真髮與天然桑蠶絲底網，針針單針手工勾織，零壓迫感。'
-              },
-              {
-                step: '04',
                 title: '現場沙龍精剪銜接',
                 desc: '資深造型師依臉型現場修剪瀏海、層次比例，完美復刻自然原生髮型。'
               },
               {
-                step: '05',
+                step: '04',
                 title: '全療程售後照護',
                 desc: '提供清洗保養指導、落髮期微調調整，並享有一年內免費修剪與保固服務。'
               }
@@ -598,31 +593,31 @@ export default function ChemoWigCatalog({
         </section>
 
         {/* Bottom CTA Card */}
-        <div className="bg-gradient-to-r from-zinc-950 via-zinc-900 to-brand-950 rounded-[2.5rem] p-8 sm:p-12 text-white text-center shadow-2xl relative overflow-hidden mb-12 border border-brand-900/30">
-          <div className="absolute top-0 right-0 w-48 h-48 bg-brand-500/10 rounded-full blur-3xl pointer-events-none" />
-          <div className="absolute -bottom-20 -left-10 w-48 h-48 bg-brand-500/10 rounded-full blur-3xl pointer-events-none" />
-          
+        <div className="bg-brand-500 rounded-[2.5rem] p-8 sm:p-12 text-zinc-950 text-center shadow-2xl relative overflow-hidden mb-12 border-2 border-white/40">
+          <div className="absolute top-0 right-0 w-48 h-48 bg-white/10 rounded-full blur-3xl pointer-events-none" />
+          <div className="absolute -bottom-20 -left-10 w-48 h-48 bg-white/10 rounded-full blur-3xl pointer-events-none" />
+
           <div className="relative z-10 max-w-2xl mx-auto space-y-6">
-            <span className="inline-block bg-brand-500/20 text-brand-300 border border-brand-500/30 text-xs font-black px-3 py-1 rounded-full uppercase tracking-wider">
+            <span className="inline-block bg-zinc-950/10 text-zinc-950 border border-zinc-950/20 text-xs font-black px-3 py-1 rounded-full uppercase tracking-wider">
               Private Medical Care
             </span>
             <h3 className="text-2xl sm:text-3xl font-black tracking-tight">溫柔守護抗癌時光，找回自信優雅笑容</h3>
-            <p className="text-zinc-300 font-light text-xs sm:text-sm leading-relaxed">
-              大衛假髮全心呵護每位面對抗癌或落髮考驗的朋友。點擊下方按鈕加入官方 LINE 留言預約，由醫療假髮專員在獨立 VIP 包廂為您一對一量身試戴。
+            <p className="text-zinc-950/80 font-semibold text-xs sm:text-sm leading-relaxed">
+              大衛假髮全心呵護每位面對抗癌或落髮考驗的朋友。點擊下方按鈕加入官方 LINE 留言預約，由專業設計師為您一對一量身試戴。
             </p>
             <div className="flex flex-col sm:flex-row justify-center gap-4 pt-2">
-              <a 
-                href="https://line.me/R/ti/p/@davidhair" 
-                target="_blank" 
+              <a
+                href="https://line.me/R/ti/p/@davidhair"
+                target="_blank"
                 rel="noreferrer"
-                className="bg-[#06C755] hover:bg-[#05b34c] text-white px-8 py-4 rounded-xl text-sm font-black transition-all flex items-center justify-center gap-2 shadow-lg cursor-pointer"
+                className="bg-zinc-950 hover:bg-zinc-900 text-white px-8 py-4 rounded-xl text-sm font-black transition-all flex items-center justify-center gap-2 shadow-lg cursor-pointer"
               >
-                <MessageCircle className="w-5 h-5" /> 
-                預約一對一私密包廂一小時免費諮詢
+                <MessageCircle className="w-5 h-5" />
+                預約一對一免費諮詢
               </a>
-              <button 
+              <button
                 onClick={onBack}
-                className="bg-transparent hover:bg-white/10 text-white border border-zinc-700 px-8 py-4 rounded-xl text-sm font-bold transition-all cursor-pointer"
+                className="bg-white/80 hover:bg-white text-zinc-900 border border-zinc-950/10 px-8 py-4 rounded-xl text-sm font-bold transition-all cursor-pointer"
               >
                 返回官網首頁
               </button>
