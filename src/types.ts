@@ -46,6 +46,7 @@ export interface ChemoWigProduct {
   baseMaterialLabel: string;
   priceType: 'custom' | 'ready';
   tag: string;
+  imgUrl?: string;
   description: string;
   breathability: number; // 1 to 5
   durability: number; // 1 to 5

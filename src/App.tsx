@@ -2989,8 +2989,8 @@ export default function App() {
 
 
 
-      {/* Chemo / Medical Wigs Section (New) */}
-      <section id="chemo" className="py-24 bg-white relative border-t border-zinc-200">
+      {/* Chemo / Medical Wigs Section */}
+      <section id="chemo" className="py-24 bg-[#FAF7F2] relative border-t border-[#EAE3D8]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div 
             initial={{ opacity: 0, y: 20 }}
@@ -2998,19 +2998,19 @@ export default function App() {
             viewport={{ once: true }}
             className="text-center mb-16 select-none"
           >
-            <div className="inline-flex items-center justify-center p-3 bg-rose-50 rounded-2xl text-rose-600 mb-6">
-              <Heart className="w-8 h-8 fill-rose-500/10" />
+            <div className="inline-flex items-center justify-center p-3 bg-[#f4ebe1] rounded-2xl text-[#8e7a64] mb-6 border border-[#ded5c7]">
+              <Heart className="w-8 h-8 fill-[#8e7a64]/20 text-[#8e7a64]" />
             </div>
             <h2 className="text-3xl md:text-5xl font-black text-zinc-900 mb-6 tracking-tight liquid-glass-heading inline-block">
               <TypewriterHeading text="化療/醫療專用舒敏假髮專區" />
             </h2>
-            <p className="text-lg text-zinc-600 max-w-3xl mx-auto font-medium leading-relaxed">
+            <p className="text-lg text-zinc-650 max-w-3xl mx-auto font-normal leading-relaxed">
               我們深刻理解您正在經歷的脆弱過程，陪伴每一位法友在舒心、隱密且專業的陪伴下渡過落髮與新生階段。
             </p>
           </motion.div>
 
           <div className="grid lg:grid-cols-12 gap-12 items-center">
-            {/* Left side: Beautiful supportive info */}
+            {/* Left side: Supportive info */}
             <motion.div 
               initial={{ opacity: 0, x: -30 }}
               whileInView={{ opacity: 1, x: 0 }}
@@ -3018,25 +3018,25 @@ export default function App() {
               className="lg:col-span-7 text-left space-y-6 select-none"
             >
               <div className="space-y-4">
-                <span className="text-xs font-black text-rose-600 bg-rose-50 px-3.5 py-1.5 rounded-full uppercase tracking-widest inline-block">
-                  medical grade & absolute privacy
+                <span className="text-xs font-black text-[#735f48] bg-[#f4ebe1] border border-[#dfd2c0] px-3.5 py-1.5 rounded-full uppercase tracking-widest inline-block">
+                  JIS S 9623 / M.WIG 醫療安心標準 ‧ 100% Remy 真人真髮
                 </span>
                 <h3 className="text-2.5xl sm:text-3.5xl font-black text-zinc-900 leading-snug">
-                  100% Remy 真人真髮 ． 專利物理自吸附底網工藝
+                  100% Remy 真人真髮 ． 雙層防敏透氣醫療網工藝
                 </h3>
                 <p className="text-zinc-650 text-base font-normal leading-relaxed">
-                  專為敏弱、化療落髮期頭皮研發。不使用任何微金屬或機械式扣夾摩擦刺激頭皮，採用物理真空自吸附工藝（穩固舒適不移位），全透氣大網孔，即使炎夏亦能透氣清爽。
+                  專為敏弱、化療落髮期頭皮研發。依循日本 M.WIG 醫療級四大檢驗規範（皮膚貼布低敏測試、游離甲醛0釋出、耐汗與耐洗高色牢度），不使用金屬扣夾或刺激黏膠，以物理自吸附防滑矽膠與全透氣立體大網孔，給予脆弱頭皮最純淨安心的溫柔守護。
                 </p>
               </div>
 
               {/* 5 Steps workflow */}
               <div className="space-y-4">
                 <h4 className="font-extrabold text-zinc-900 text-lg flex items-center gap-2">
-                  <Sparkles className="w-5 h-5 text-rose-500 animate-pulse" />
+                  <Sparkles className="w-5 h-5 text-[#8e7a64]" />
                   化療/醫療假髮 5 部曲舒心服務流程
                 </h4>
                 
-                <div className="relative border-l border-zinc-200 ml-3.5 pl-6 space-y-5 py-2">
+                <div className="relative border-l border-[#ded5c7] ml-3.5 pl-6 space-y-5 py-2">
                   {[
                     { step: "01", title: "LINE 預約與私密諮詢", desc: "加官方 LINE 預約，後台由專人溫柔安排一對一隱密諮詢空間（台北、台中門市為全隔音 VIP 包廂），隔絕外界打擾。" },
                     { step: "02", title: "頭型曲率精密倒模與皮膚防敏測試", desc: "大衛哥為您精密測量顱骨與耳位；大衛嫂提供 10 分鐘貼皮敏弱測試，保證 24 小時配戴不泛紅。" },
@@ -3045,18 +3045,18 @@ export default function App() {
                     { step: "05", title: "終身售後調整與「愛心免費備用假髮」計畫", desc: "後期體重或新髮生長導致頭圍 ±1.5cm 變化時由大衛哥終身免費調校；並提供紫外線與銀離子雙殺菌之醫療備用假髮完全免費借用。" }
                   ].map((val, idx) => (
                     <div key={idx} className="relative group text-left">
-                      <div className="absolute -left-[35px] top-1 w-6 h-6 rounded-full bg-white border border-rose-200 text-rose-600 flex items-center justify-center font-black text-[10px] group-hover:bg-rose-500 group-hover:text-white group-hover:border-rose-500 transition-colors shadow-sm">
+                      <div className="absolute -left-[35px] top-1 w-6 h-6 rounded-full bg-white border border-[#ded5c7] text-[#8e7a64] flex items-center justify-center font-black text-[10px] group-hover:bg-[#8e7a64] group-hover:text-white group-hover:border-[#8e7a64] transition-colors shadow-xs">
                         {val.step}
                       </div>
                       <h5 className="font-extrabold text-zinc-900 text-base">{val.title}</h5>
-                      <p className="text-zinc-500 text-xs mt-1 leading-relaxed font-normal">{val.desc}</p>
+                      <p className="text-zinc-600 text-xs mt-1 leading-relaxed font-normal">{val.desc}</p>
                     </div>
                   ))}
                 </div>
               </div>
 
               {/* Empathy subsidy disclaimer banner */}
-              <div className="bg-zinc-50 border border-zinc-200/80 rounded-2xl p-5 space-y-2 text-left">
+              <div className="bg-white border border-[#eae3d8] rounded-2xl p-5 space-y-2 text-left shadow-xs">
                 <p className="font-extrabold text-zinc-950 text-xs md:text-sm flex items-center gap-1.5">
                   <ShieldCheck className="w-4.5 h-4.5 text-[#8e7a64]" />
                   大衛特別說明 ｜ 關於醫療與政府輔具補助
@@ -3067,29 +3067,40 @@ export default function App() {
               </div>
             </motion.div>
 
-            {/* Right side: Image and action button */}
+            {/* Right side: Large Authentic Photo Showcase & action button */}
             <motion.div 
               initial={{ opacity: 0, x: 30 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
-              className="lg:col-span-5 flex flex-col items-center bg-zinc-50 rounded-3xl p-6 border border-zinc-150 shadow-sm select-none"
+              className="lg:col-span-5 flex flex-col items-center bg-white rounded-3xl p-6 sm:p-8 border border-[#eae3d8] shadow-md select-none"
             >
-              <div className="w-full aspect-[4/3] rounded-2xl overflow-hidden border border-zinc-200 shadow-inner bg-white relative group">
+              {/* Big High-Resolution Image Container */}
+              <div 
+                onClick={() => {
+                  setCurrentView('chemo-catalog');
+                  window.scrollTo({ top: 0, behavior: 'instant' });
+                }}
+                className="w-full aspect-[4/3] rounded-2xl overflow-hidden border-2 border-[#ded5c7] shadow-sm bg-[#f5ede3] relative group cursor-pointer"
+              >
                 <img loading="lazy" decoding="async" 
-                  src="/images/guide-nets.png" 
-                  alt="大衛醫療假髮進口輕羽底網" 
+                  src="/images/抗癌2.jpg" 
+                  alt="大衛醫療化療假髮真人配戴大圖效果" 
                   className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
                   referrerPolicy="no-referrer"
                 />
-                <div className="absolute bottom-3 left-3 bg-white/90 backdrop-blur-sm px-3.5 py-1.5 rounded-lg text-[10px] font-bold text-[#8e7a64] border border-zinc-150">
-                  📷 特寫：特製醫療防霉超透氣輕盈底網
+                <div className="absolute top-3 left-3 bg-white/95 backdrop-blur-sm px-3 py-1 rounded-lg text-xs font-black text-zinc-900 border border-[#ded5c7] shadow-xs">
+                  真人配戴自然效果大圖
+                </div>
+                <div className="absolute bottom-3 right-3 bg-zinc-950/85 hover:bg-zinc-950 text-white px-3 py-1.5 rounded-xl text-xs font-black flex items-center gap-1.5 shadow-md backdrop-blur-sm">
+                  <span>點擊進入專區看大圖</span>
+                  <ChevronRight className="w-3.5 h-3.5" />
                 </div>
               </div>
 
               <div className="text-center w-full mt-6 space-y-4">
                 <h4 className="font-extrabold text-xl text-zinc-900">溫柔關懷 ． 煥然新生</h4>
-                <p className="text-zinc-500 font-light text-xs leading-relaxed max-w-sm mx-auto">
-                  大衛哥與大衛嫂團隊，在舒適獨立的全隔音包廂內，提供包含舒心剃頭、底網適應微調與售後保養的全流程陪伴。
+                <p className="text-zinc-650 font-normal text-xs leading-relaxed max-w-sm mx-auto">
+                  大衛哥與大衛嫂團隊，在獨立全隔音 VIP 包廂內，提供符合 M.WIG 醫療標準四大檢測的真髮假髮、舒心陪伴與量身精修。
                 </p>
 
                 <button
@@ -3098,10 +3109,10 @@ export default function App() {
                     setCurrentView('chemo-catalog');
                     window.scrollTo({ top: 0, behavior: 'instant' });
                   }}
-                  className="inline-flex items-center gap-2 bg-rose-600 hover:bg-rose-700 text-white px-8 py-4 rounded-xl font-extrabold text-sm transition-all shadow-md hover:shadow-rose-600/10 active:scale-95 group cursor-pointer w-full justify-center"
+                  className="inline-flex items-center gap-2 bg-[#8e7a64] hover:bg-[#7a6854] text-white px-8 py-4 rounded-xl font-extrabold text-sm transition-all shadow-md hover:shadow-lg active:scale-95 group cursor-pointer w-full justify-center"
                 >
-                  <HeartHandshake className="w-4.5 h-4.5 text-white animate-pulse" />
-                  <span>開啟醫療化療專區款式頁 (Chemo Catalog)</span>
+                  <HeartHandshake className="w-4.5 h-4.5 text-white" />
+                  <span>瀏覽 M.WIG 醫療專區全系列款式與高解析大圖</span>
                   <ChevronRight className="w-4.5 h-4.5 group-hover:translate-x-1 transition-transform" />
                 </button>
               </div>
