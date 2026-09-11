@@ -459,7 +459,7 @@ export default function MensWigCatalog({
                 男士假髮・真人改造前後對比 (Before & After)
               </h2>
               <p className="text-zinc-600 text-sm sm:text-base font-normal leading-relaxed">
-                告別禿頂與髮際線後退的歲月痕跡。大衛哥嚴選 100% 特級 Remy 真人髮絲，純手工單根微雕，宛若天生髮旋毛囊，瞬間重現自信尊榮風範。
+                告別禿頂與髮際線後退的歲月痕跡。大衛哥嚴選 100% 特級真人髮絲，純手工單根微雕，宛若天生髮旋毛囊，瞬間重現自信尊榮風範。
               </p>
             </div>
 
@@ -510,22 +510,22 @@ export default function MensWigCatalog({
                       <ArrowDown className="w-4 h-4 animate-bounce" />
                     </div>
                   </div>
+                </div>
 
-                  {/* Bottom Information Overlay */}
-                  <div className="absolute bottom-3 inset-x-3 sm:bottom-4 sm:inset-x-6 z-20 bg-zinc-950/90 backdrop-blur-md border border-brand-500/30 text-white rounded-2xl p-3 sm:p-4 flex flex-col sm:flex-row items-center justify-between gap-3 shadow-2xl">
-                    <div className="text-xs sm:text-sm font-bold text-zinc-300 text-center sm:text-left">
-                      <span className="text-brand-400 font-black">【大衛哥真人實證】</span> 100% Remy 特級真髮 ‧ 宛若天生髮旋毛囊 ‧ 360° 透氣隱形微雕
-                    </div>
-                    <a
-                      href="https://line.me/R/ti/p/@davidhair"
-                      target="_blank"
-                      rel="noreferrer"
-                      className="shrink-0 bg-[#06C755] hover:bg-[#05b34c] text-white text-xs sm:text-sm font-black px-4 py-2 rounded-xl flex items-center gap-1.5 shadow transition-transform hover:scale-105"
-                    >
-                      <MessageCircle className="w-4 h-4 fill-white" />
-                      LINE 免費評估
-                    </a>
+                {/* Bottom Information Bar placed cleanly below the photo */}
+                <div className="bg-zinc-900 border-t border-zinc-800/90 text-white p-3.5 sm:p-4 px-4 sm:px-6 flex flex-col sm:flex-row items-center justify-between gap-3">
+                  <div className="text-xs sm:text-sm font-bold text-zinc-200 text-center sm:text-left">
+                    <span className="text-brand-400 font-black">【大衛哥真人實證】</span> 100% 特級真髮 ‧ 宛若天生髮旋毛囊 ‧ 360° 透氣隱形微雕
                   </div>
+                  <a
+                    href="https://line.me/R/ti/p/@davidhair"
+                    target="_blank"
+                    rel="noreferrer"
+                    className="shrink-0 bg-[#06C755] hover:bg-[#05b34c] text-white text-xs sm:text-sm font-black px-4 py-2 rounded-xl flex items-center gap-1.5 shadow transition-transform hover:scale-105"
+                  >
+                    <MessageCircle className="w-4 h-4 fill-white" />
+                    LINE 免費評估
+                  </a>
                 </div>
 
               </div>
@@ -534,7 +534,7 @@ export default function MensWigCatalog({
             {/* 4 Pillars Mini Badges */}
             <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 pt-6 border-t border-zinc-100 text-center">
               <div className="p-3 bg-zinc-50 rounded-2xl border border-zinc-200/60">
-                <span className="block text-xs font-black text-zinc-900">100% Remy 少女真髮</span>
+                <span className="block text-xs font-black text-zinc-900">100% 少女真髮</span>
                 <span className="text-[11px] text-zinc-500">毛鱗片順滑不糾結</span>
               </div>
               <div className="p-3 bg-zinc-50 rounded-2xl border border-zinc-200/60">
@@ -542,7 +542,7 @@ export default function MensWigCatalog({
                 <span className="text-[11px] text-zinc-500">全日透氣清爽不悶熱</span>
               </div>
               <div className="p-3 bg-zinc-50 rounded-2xl border border-zinc-200/60">
-                <span className="block text-xs font-black text-zinc-900">3秒微夾 / 醫療防敏膠</span>
+                <span className="block text-xs font-black text-zinc-900">全夾 / 全粘 / 前黏後夾</span>
                 <span className="text-[11px] text-zinc-500">多種配戴方式隨心選</span>
               </div>
               <div className="p-3 bg-zinc-50 rounded-2xl border border-zinc-200/60">
@@ -574,14 +574,14 @@ export default function MensWigCatalog({
                   <div className="w-8 h-8 rounded-full bg-zinc-950 text-white font-bold flex items-center justify-center shrink-0 text-xs shadow-md">A</div>
                   <div>
                     <h4 className="font-extrabold text-sm text-zinc-900">夾扣固定 (不需剃髮)</h4>
-                    <p className="text-sm text-zinc-600 leading-relaxed mt-1 font-normal">適合頭頂兩側仍有健康原生髮、不願剃除原生髮的髮友，使用專用親膚不鏽鋼夾扣定點扣合，極速穿脫，無多餘耗材。</p>
+                    <p className="text-sm text-zinc-600 leading-relaxed mt-1 font-normal">適合頭頂兩側仍有健康原生髮、不願剃除原生髮的髮友，親膚夾扣扣合，極速穿脫，無多餘耗材。</p>
                   </div>
                 </div>
                 <div className="flex gap-4 items-start">
                   <div className="w-8 h-8 rounded-full bg-zinc-950 text-white font-bold flex items-center justify-center shrink-0 text-xs shadow-md">B</div>
                   <div>
                     <h4 className="font-extrabold text-sm text-zinc-900">前黏後夾 (兼顧髮際線與便利性)</h4>
-                    <p className="text-sm text-zinc-600 leading-relaxed mt-1 font-normal">前額使用髮片專用膠帶，呈現完美的無痕微雕髮際線；後方與兩側使用定點夾扣鎖定。</p>
+                    <p className="text-sm text-zinc-600 leading-relaxed mt-1 font-normal">前額使用髮片專用膠帶，呈現完美的無痕微雕髮際線；後方與兩側使用夾扣固定。</p>
                   </div>
                 </div>
                 <div className="flex gap-4 items-start">
@@ -613,7 +613,7 @@ export default function MensWigCatalog({
             <h2 className="text-3xl sm:text-4xl font-black text-zinc-900 tracking-tight liquid-glass-heading inline-block">
               <EditableText
                 idKey="mens-why-title"
-                defaultText="為什麼髮友一致推薦「大衛健康科技假髮」？"
+                defaultText="為什麼髮友一致推薦「大衛假髮」？"
                 as="span"
                 isAdmin={isAdmin}
                 isEditMode={isEditMode}
@@ -718,7 +718,7 @@ export default function MensWigCatalog({
               {
                 step: '05',
                 title: '專屬售後服務',
-                desc: '配戴完成！教學您 30秒除膠與日常簡單洗滌訣竅，凡出廠假髮皆享有一年內免費補一次髮量服務。'
+                desc: '配戴完成！教學您除膠與日常簡單洗滌訣竅，凡出廠假髮皆享有一年內免費補一次髮量服務。'
               }
             ].map((item, index) => (
               <div key={item.step} className="relative flex flex-col items-center text-center space-y-4 bg-zinc-900/60 p-6 rounded-2xl border border-zinc-800/80 group hover:bg-zinc-900 transition-all duration-300">

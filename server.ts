@@ -57,12 +57,12 @@ function initDB(): DatabaseSchema {
       baseMaterialLabel: "雙層網底",
       priceType: "custom",
       tag: "頂部局部微增・3秒快扣",
-      description: "參考 W.RICH 頂級工藝。專為解決女性頭頂扁塌、分線漸寬、頂部白髮及產後掉髮設計。採用高透氣立體雙層網底，純手工逐針單根勾織 100% Remy 優質真人少女健康髮，與原生髮天衣無縫自然揉合，一扣秒變蓬鬆高顱頂。",
+      description: "參考 W.RICH 頂級工藝。專為解決女性頭頂扁塌、分線漸寬、頂部白髮及產後掉髮設計。採用高透氣立體雙層網底，純手工逐針單根勾織 100% 優質真人少女健康髮，與原生髮天衣無縫自然揉合，一扣秒變蓬鬆高顱頂。",
       breathability: 5,
       durability: 5,
       naturalness: 5,
       features: [
-        "100% 特優級 Remy 少女健康真髮，毛鱗片順滑不糾結",
+        "100% 特優級少女健康真髮，毛鱗片順滑不糾結",
         "專利微型親膚防滑夾扣，3 秒快穿、絕不扯原生髮",
         "雙層網底，近距離呈現天然毛囊頭皮血色感",
         "極輕透氣、全日佩戴無悶熱負擔"
@@ -177,7 +177,7 @@ function initDB(): DatabaseSchema {
       baseMaterialLabel: "雙層網底",
       priceType: "custom",
       tag: "45cm+ 嚴選長髮・名媛氣場",
-      description: "嚴選 45-50cm 超長優質 Remy 少女真髮絲，波浪優雅垂墜，髮量豐沛有光澤。結合職人手勾頂部毛孔技術，分線自由切換，完美詮釋高貴優雅風範。",
+      description: "嚴選 45-50cm 超長優質少女真髮絲，波浪優雅垂墜，髮量豐沛有光澤。結合職人手勾頂部毛孔技術，分線自由切換，完美詮釋高貴優雅風範。",
       breathability: 5,
       durability: 5,
       naturalness: 5,
@@ -332,7 +332,7 @@ function initDB(): DatabaseSchema {
       gentleness: 5,
       features: [
         "抗敏感無痕桑蠶絲親膚打底，零刺癢感",
-        "純手工單針勾織真人 Remy 少女健康髮",
+        "純手工單針勾織真人少女健康髮",
         "360度可調節親膚彈性帶，適應頭圍變化",
         "附開立正式醫療發票，支持申請醫療保險補助"
       ],

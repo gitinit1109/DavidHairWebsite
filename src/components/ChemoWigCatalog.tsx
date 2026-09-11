@@ -29,7 +29,7 @@ const DEFAULT_CHEMO_PRODUCTS: ChemoWigProduct[] = [
     features: [
       '100% 物理低敏感醫療網親膚打底，零刺激不悶癢',
       '純手工單根遞針勾織，呈現天生毛囊與自然頭皮血色',
-      '100% Remy 特優級純淨少女真髮，自然柔順可自由吹整修剪',
+      '100% 特優級純淨少女真髮，自然柔順可自由吹整修剪',
       '3D 彈力微孔內網結構，全方位排汗透氣，炎夏配戴零負擔'
     ],
     stylingTips: '建議使用弱酸性溫和洗髮精平鋪輕按清洗，自然陰乾後輕輕梳理即可恢復柔順光澤。',
@@ -416,22 +416,22 @@ export default function ChemoWigCatalog({
                       <ArrowDown className="w-4 h-4 animate-bounce" />
                     </div>
                   </div>
+                </div>
 
-                  {/* Bottom Information Overlay */}
-                  <div className="absolute bottom-3 inset-x-3 sm:bottom-4 sm:inset-x-6 z-20 bg-zinc-950/90 backdrop-blur-md border border-brand-500/30 text-white rounded-2xl p-3 sm:p-4 flex flex-col sm:flex-row items-center justify-between gap-3 shadow-2xl">
-                    <div className="text-xs sm:text-sm font-bold text-zinc-300 text-center sm:text-left">
-                      <span className="text-brand-400 font-black">【病友實證蛻變】</span> 100% 純淨真髮 ‧ 醫療網等級內網 ‧ 360° 舒適透氣零壓迫
-                    </div>
-                    <a
-                      href="https://line.me/R/ti/p/@davidhair"
-                      target="_blank"
-                      rel="noreferrer"
-                      className="shrink-0 bg-[#06C755] hover:bg-[#05b34c] text-white text-xs sm:text-sm font-black px-4 py-2 rounded-xl flex items-center gap-1.5 shadow transition-transform hover:scale-105"
-                    >
-                      <MessageCircle className="w-4 h-4 fill-white" />
-                      LINE 醫療專員諮詢
-                    </a>
+                {/* Bottom Information Bar placed cleanly below the photo */}
+                <div className="bg-zinc-900 border-t border-zinc-800/90 text-white p-3.5 sm:p-4 px-4 sm:px-6 flex flex-col sm:flex-row items-center justify-between gap-3">
+                  <div className="text-xs sm:text-sm font-bold text-zinc-200 text-center sm:text-left">
+                    <span className="text-brand-400 font-black">【病友實證蛻變】</span> 100% 純淨真髮 ‧ 醫療網等級內網 ‧ 360° 舒適透氣零壓迫
                   </div>
+                  <a
+                    href="https://line.me/R/ti/p/@davidhair"
+                    target="_blank"
+                    rel="noreferrer"
+                    className="shrink-0 bg-[#06C755] hover:bg-[#05b34c] text-white text-xs sm:text-sm font-black px-4 py-2 rounded-xl flex items-center gap-1.5 shadow transition-transform hover:scale-105"
+                  >
+                    <MessageCircle className="w-4 h-4 fill-white" />
+                    LINE 醫療專員諮詢
+                  </a>
                 </div>
 
               </div>

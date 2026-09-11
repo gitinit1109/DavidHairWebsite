@@ -283,6 +283,7 @@ export default function App() {
         { label: '活動與公告', target: 'blog', category: '活動與公告' },
       ],
     },
+    { id: 'faq', label: '常見問題', type: 'view', target: 'faq' },
     { id: 'about-us', label: '關於我們', type: 'view', target: 'about-us' },
   ];
 
@@ -1786,7 +1787,7 @@ export default function App() {
                   },
                   {
                     title: "化療/醫療專區",
-                    desc: "防敏吸附物理底網，陪伴落髮與新生的五步舒心服務。",
+                    desc: "防敏吸附物理底網，陪伴落髮與新生的四步舒心服務。",
                     icon: Heart,
                     target: "chemo-catalog"
                   },
@@ -1873,31 +1874,6 @@ export default function App() {
         <>
           {renderSubpageHeader("品牌故事", "髮友自營，極致手鉤真人髮，更懂你的重獲新生之旅")}
 
-          {/* New Customer trust guarantee icons board (最下排的5個信任點) */}
-          <section id="trust-bar" className="py-8 bg-[#fdfbf9] border-y border-zinc-150 select-none mb-12">
-            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-              <div className="grid grid-cols-2 md:grid-cols-5 gap-4 md:gap-6">
-                {[
-                  { title: "真人案例見證", desc: "成就更多自信笑容", icon: ThumbsUp },
-                  { title: "專業團隊服務", desc: "一對一諮詢 ． 量身規劃", icon: Scissors },
-                  { title: "安心試戴體驗", desc: "現場試戴 ． 滿意再購買", icon: Smile },
-                  { title: "售後保固服務", desc: "專業調整 ． 長期保固", icon: HeartHandshake },
-                  { title: "隱私安心", desc: "個資保護 ． 放心諮詢", icon: ShieldCheck }
-                ].map((item, idx) => (
-                  <div key={idx} className="flex items-center gap-3 text-left p-3 rounded-xl hover:bg-white hover:shadow-sm transition-all duration-300">
-                    <div className="w-10 h-10 rounded-full bg-amber-500/10 text-amber-600 flex items-center justify-center shrink-0">
-                      <item.icon className="w-5 h-5 text-[#8e7a64]" />
-                    </div>
-                    <div>
-                      <span className="font-extrabold text-[11px] sm:text-xs text-zinc-900 leading-tight block">{item.title}</span>
-                      <span className="text-[9px] sm:text-[10px] text-zinc-400 font-bold tracking-tight block mt-0.5 leading-none">{item.desc}</span>
-                    </div>
-                  </div>
-                ))}
-              </div>
-            </div>
-          </section>
-
           {/* Brand Story Section */}
           <section id="about" className="py-24 bg-white relative overflow-hidden">
             {/* Decorative elements */}
@@ -1917,15 +1893,42 @@ export default function App() {
                       FOUNDER'S STORY
                     </div>
                   </div>
-              <h2 className="text-2xl sm:text-3xl md:text-5xl font-black text-zinc-900 mb-8 tracking-tight liquid-glass-heading inline-block">
-                <TypewriterHeading text="髮友自營" className="block" hideCursor />
-                <TypewriterHeading text="更懂你的需求" className="text-brand-600" delay={0.5} />
+              <h2 className="text-2xl sm:text-3xl md:text-4xl font-black text-zinc-900 mb-6 tracking-tight liquid-glass-heading block">
+                <span className="text-brand-600">品牌起源</span>
+                <span className="text-zinc-300 font-light mx-2">｜</span>
+                <span className="text-zinc-900">從髮友到職人，大衛假髮的淬鍊之路</span>
               </h2>
+
+              {/* Founder Quote Card */}
+              <div className="mb-8 p-5 sm:p-6 rounded-2xl bg-amber-50/70 border border-amber-200/80 border-l-4 border-l-amber-600 text-amber-950 shadow-sm">
+                <blockquote className="font-serif italic font-bold text-lg sm:text-xl leading-relaxed text-zinc-900">
+                  <EditableText
+                    idKey="about-quote"
+                    defaultText="「因為感同身受，所以追求完美。」"
+                    as="span"
+                    isAdmin={isAdminUser}
+                    isEditMode={isEditMode}
+                    siteContent={siteContent}
+                    onSave={handleSaveSiteContent}
+                  />
+                </blockquote>
+                <p className="text-sm font-bold text-amber-800 mt-2">
+                  <EditableText
+                    idKey="about-author"
+                    defaultText="—— 創辦人 David"
+                    as="span"
+                    isAdmin={isAdminUser}
+                    isEditMode={isEditMode}
+                    siteContent={siteContent}
+                    onSave={handleSaveSiteContent}
+                  />
+                </p>
+              </div>
               
-              <div className="space-y-6 text-base sm:text-lg text-zinc-600 leading-relaxed font-light">
+              <div className="space-y-5 text-base sm:text-lg text-zinc-650 leading-relaxed font-normal">
                 <EditableText
                   idKey="about-p1"
-                  defaultText="我是David，也是一名家族遺傳雄性禿髮友。 多年前，我在臺灣一家連鎖品牌購買了我的第一頂假髮。當我開始佩戴假髮後，不僅改善了我的外貌也增加自信，整個人也顯得更有精神。當時我只是單純享受著佩戴假髮後對生活正向的改變，沒有意識到這將是我未來創業之路的開始。"
+                  defaultText="身為家族遺傳性雄性禿的髮友，我曾深切體會過落髮對自信與生活帶來的衝擊。多年前，當我戴上人生第一頂髮片時，那份外貌上的改變與重獲精神的感動，至今仍歷歷在目。這不僅是一次外在的轉變，更是我人生創業旅程的起點。"
                   as="p"
                   className="break-words"
                   isAdmin={isAdminUser}
@@ -1935,7 +1938,7 @@ export default function App() {
                 />
                 <EditableText
                   idKey="about-p2"
-                  defaultText="一開始只是因為自己也有需求，便在下班時兼職銷售假髮黏貼膠帶。也因此在網上結識了許多和自己一樣使用髮片的髮友。這些髮友與我分享了他們的經驗 and 需求，也激勵我之後走上了創業的道路。"
+                  defaultText="起初，我僅是以愛用者的角度，在公餘時間兼職銷售假髮專用黏貼膠帶。這段經歷讓我結識了無數背景相似、面臨相同困擾的髮友。在與他們的深度交流中，我傾聽了許多關於佩戴不適、外觀不自然以及維護成本高昂的真實痛點。"
                   as="p"
                   className="break-words"
                   isAdmin={isAdminUser}
@@ -1945,7 +1948,17 @@ export default function App() {
                 />
                 <EditableText
                   idKey="about-p3"
-                  defaultText="在我的第一頂假髮經過多次維修後，已經變得破舊不堪，而購買新假髮的高昂價格也讓我感到困擾。 我開始思考，是否有更好的替代方案？於是，我決定深入研究假髮的製作流程。 我學習如何製作頭模、選擇底網、髮質和鈎髮相關工藝。"
+                  defaultText="當我的第一頂假髮因多年耗損而面臨報廢，且市面上動輒數萬元的昂貴售價令我卻步時，我開始思考：「難道追求自信，必須付出如此高昂的代價？」"
+                  as="p"
+                  className="break-words font-medium text-zinc-850 italic bg-zinc-50 p-4 rounded-xl border border-zinc-200/80"
+                  isAdmin={isAdminUser}
+                  isEditMode={isEditMode}
+                  siteContent={siteContent}
+                  onSave={handleSaveSiteContent}
+                />
+                <EditableText
+                  idKey="about-p4"
+                  defaultText="為了尋找更好的解決方案，我決定發揮工程師的職人精神，深入研究假髮的底層工藝。從精準的頭模量製、底網材質篩選、嚴選優質髮質，到核心的手工鈎髮技術，我逐步掌握了高階假髮的核心製程。我意識到，唯有打破傳統通路的層層剝離，直接與頂尖假髮工廠對接，才能在兼顧極致品質的同時，提供合理且透明的價格。"
                   as="p"
                   className="break-words"
                   isAdmin={isAdminUser}
@@ -1954,10 +1967,20 @@ export default function App() {
                   onSave={handleSaveSiteContent}
                 />
                 <EditableText
-                  idKey="about-p4"
-                  defaultText="我逐漸明白，我可以不再依賴假髮店，而是直接與假髮製作工廠合作。在眾多髮友的鼓勵和支持下，我在2020年辭去了工程師的工作，創立了魔髮倉庫工作室，開始經營髮片訂製業務，並於2025年設立台北門市-大衛假髮。"
+                  idKey="about-p5"
+                  defaultText="在眾多髮友的信任與期盼下，我於 2020 年毅然辭去工程師一職，創立「魔髮倉庫工作室」，正式深耕高階客製化髮片業務。歷經五年的口碑沉澱與技術更迭，為了提供髮友更具隱私、更專業的實體諮詢體驗，我們於 2025 年正式成立台北門市——「大衛假髮」。"
                   as="p"
                   className="break-words"
+                  isAdmin={isAdminUser}
+                  isEditMode={isEditMode}
+                  siteContent={siteContent}
+                  onSave={handleSaveSiteContent}
+                />
+                <EditableText
+                  idKey="about-p6"
+                  defaultText="大衛假髮不只是販售一頂假髮，更是以「手工頂級工藝」與「髮友同理心」為核心，為每位追求美好生活的人，量身打造重拾自信的關鍵方案。"
+                  as="p"
+                  className="break-words font-semibold text-zinc-900 border-l-2 border-brand-500 pl-4 py-1"
                   isAdmin={isAdminUser}
                   isEditMode={isEditMode}
                   siteContent={siteContent}
@@ -2129,6 +2152,31 @@ export default function App() {
                 onSave={handleSaveSiteContent}
               />
             </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Customer trust guarantee icons board (移至初衷與承諾、目前的發展框架下方) */}
+      <section id="brand-trust-bar" className="py-8 bg-[#fdfbf9] border-t border-zinc-200 select-none">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid grid-cols-2 md:grid-cols-5 gap-4 md:gap-6">
+            {[
+              { title: "真人案例見證", desc: "成就更多自信笑容", icon: ThumbsUp },
+              { title: "專業團隊服務", desc: "一對一諮詢 ． 量身規劃", icon: Scissors },
+              { title: "安心試戴體驗", desc: "現場試戴 ． 滿意再購買", icon: Smile },
+              { title: "售後保固服務", desc: "專業調整 ． 長期保固", icon: HeartHandshake },
+              { title: "隱私安心", desc: "個資保護 ． 放心諮詢", icon: ShieldCheck }
+            ].map((item, idx) => (
+              <div key={idx} className="flex items-center gap-3 text-left p-3 rounded-xl hover:bg-white hover:shadow-sm transition-all duration-300">
+                <div className="w-10 h-10 rounded-full bg-amber-500/10 text-amber-600 flex items-center justify-center shrink-0">
+                  <item.icon className="w-5 h-5 text-[#8e7a64]" />
+                </div>
+                <div>
+                  <span className="font-extrabold text-[11px] sm:text-xs text-zinc-900 leading-tight block">{item.title}</span>
+                  <span className="text-[9px] sm:text-[10px] text-zinc-400 font-bold tracking-tight block mt-0.5 leading-none">{item.desc}</span>
+                </div>
+              </div>
+            ))}
           </div>
         </div>
       </section>
@@ -2516,7 +2564,7 @@ export default function App() {
               className="bg-white rounded-3xl p-4 md:p-8 shadow-xl shadow-zinc-200/50 border border-zinc-100 liquid-glass-panel"
             >
               <h3 className="text-2xl font-bold text-center text-zinc-800 mb-6 border-b pb-4 border-zinc-100">網底選擇對照</h3>
-              <img loading="lazy" decoding="async" src="/images/guide-nets.png" alt="網底選擇指南" className="w-full h-auto min-h-[300px] sm:min-h-0 rounded-xl shadow-sm object-contain bg-white" />
+              <img loading="lazy" decoding="async" src="/images/guide-nets.png?v=2" alt="網底選擇指南" className="w-full h-auto min-h-[300px] sm:min-h-0 rounded-xl shadow-sm object-contain bg-white" />
             </motion.div>
 
             <motion.div
@@ -2834,92 +2882,6 @@ export default function App() {
           </div>
         </div>
       </section>
-
-      {/* FAQ Section */}
-      <section id="faq" className="py-24 bg-zinc-50 relative overflow-hidden border-t border-zinc-200">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-          <motion.div 
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="text-center mb-16"
-          >
-            <div className="inline-flex items-center justify-center p-3 bg-brand-50 rounded-2xl text-brand-600 mb-6">
-              <BookHeart className="w-8 h-8" />
-            </div>
-            <h2 className="text-3xl md:text-5xl font-black text-zinc-900 mb-6 tracking-tight liquid-glass-heading inline-block">
-              <TypewriterHeading text="常見問答 FAQ" />
-            </h2>
-            <p className="text-lg text-zinc-600 font-medium">為您解答關於價格、品質與售後的種種疑惑。</p>
-          </motion.div>
-
-          <div className="space-y-4">
-            {[
-              {
-                q: "Q：髮片價格跟我之前買的便宜這麼多，品質會不會很糟？",
-                a: "我賣的價格其實不算便宜，而是原本台灣髮片的價格貴得太離譜了。我初期一開始是打算到歐美的網站訂購髮片，那時候線上看價格所有訂製選項都用頂級，一頂做到好也才二萬六。只是後來看製造工廠也是在大陸，所以我才重新到大陸找工廠配合。"
-              },
-              {
-                q: "Q：看相片感覺還不錯，收到髮片後會不會很爛的品質？",
-                a: "以我目前代理的這間髮片工廠，本身價格並不是最便宜的，在大陸算中等價位。因為我當初找工廠時價格不是我的第一考量點，髮片品質才是我第一考慮的。那時在大陸也買了不少價格便宜、網上相片看起來也不錯的髮片，但收到髮片時，就想直接丟垃圾筒了。我目前代理的這家髮片是我收到品質我認為最好的，所以我才敢跟他簽約談代理。目前來我工作室看過的髮友也都認為品質比他們自己在戴的還好，也有髮友把我的髮片拿給魔髮部屋跟愛德蘭絲的設計師看過，設計師也都認為髮片的品質比他們自家髮片還要好。"
-              },
-              {
-                q: "Q：是全真髮嗎？可以染燙嗎？",
-                a: "整頂都是全真人頭髮，都可以做染燙沒問題的。我自己也有去給設計師燙過造型哦。"
-              },
-              {
-                q: "Q：之後的剪髮及維修服務？",
-                a: "關於剪髮的部分是目前較困擾的部分，因為我自己本身是不會剪的，當初有考慮去學剪髮但最後還是決定交給專業的設計師會較好。目前在台北、中壢、高雄都有配合的設計師，收到髮片後可以自行跟設計師聯絡預約時間剪髮。髮片修剪完後，之後自身頭髮的修剪就可以自己到你原本的髮片門市做修剪就好。維修的部分，之後也都可以送回原廠做補髮跟網底維修不用擔心哦。"
-              },
-              {
-                q: "Q：之後訂製需要重新做頭模嗎？",
-                a: "做好的頭模我都有請工廠幫我建檔保存，之後若沒有需要調整大小的話，可以照存檔的頭模製做就好不用重新做模哦。"
-              },
-              {
-                q: "Q：如果風太大髮片會掉嗎？",
-                a: "如果髮夾有夾好，膠帶有貼好，基本上不會有被吹走的困擾，不用太擔心。"
-              },
-              {
-                q: "Q：髮片使用的髮夾搭飛機能通關嗎？",
-                a: "經測試搭飛機使用髮夾通關沒有問題唷"
-              },
-              {
-                q: "Q：訂製髮片，需要剃髮嗎？",
-                a: "目前髮片固定方式如下：\n《夾式》\n《全黏貼式》\n《前黏後夾式》\n\n通常會根據您的髮量現況、平常使用習慣，來評估何種固定方式較適合您\n有些僅需剃除少量原生髮，不至於整個剃光\n相關細節都會在現場與您做溝通後再決定\n請不用擔心唷"
-              }
-            ].map((faq, i) => (
-              <motion.details
-                key={i}
-                initial={{ opacity: 0, y: 10 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: i * 0.1 }}
-                className="group bg-white rounded-2xl border border-zinc-200 overflow-hidden shadow-sm hover:shadow-md transition-all"
-              >
-                <summary className="flex items-center justify-between p-6 cursor-pointer list-none">
-                  <h3 className="font-bold text-zinc-900 pr-4">{faq.q}</h3>
-                  <div className="flex-shrink-0 w-6 h-6 rounded-full bg-zinc-100 flex items-center justify-center group-open:rotate-180 transition-transform">
-                    <ChevronRight className="w-4 h-4 text-brand-600 rotate-90" />
-                  </div>
-                </summary>
-                <div className="px-6 pb-6 pt-2 text-zinc-600 leading-relaxed font-light border-t border-zinc-50">
-                  <p className="whitespace-pre-line">{faq.a}</p>
-                </div>
-              </motion.details>
-            ))}
-          </div>
-
-          <div className="mt-16 p-8 bg-brand-500 rounded-3xl text-center shadow-xl border border-brand-400">
-            <h4 className="text-xl font-black text-zinc-950 mb-4">還有其他想問的嗎？</h4>
-            <div className="flex flex-wrap justify-center gap-4">
-              <a href="https://line.me/R/ti/p/@davidhair" target="_blank" rel="noreferrer" className="bg-zinc-950 text-white px-8 py-3 rounded-xl font-bold hover:bg-zinc-800 transition-colors shadow-lg flex items-center gap-2">
-                <MessageCircle className="w-5 h-5 text-brand-500" />
-                預約 David哥 線上諮詢
-              </a>
-            </div>
-          </div>
-        </div>
-      </section>
         </>
       )}
 
@@ -3003,7 +2965,7 @@ export default function App() {
             <img loading="lazy" decoding="async" src="/images/catalog-women.jpg" alt="女士假髮產品型錄" className="w-full h-auto sm:min-h-[500px] rounded-xl shadow-sm object-contain bg-white mb-8" />
             
             <div className="text-center w-full max-w-xl pb-4">
-              <h3 className="font-extrabold text-2xl text-zinc-900 mb-4">專屬量頭訂製 ｜ 頂級真人Remy少女髮</h3>
+              <h3 className="font-extrabold text-2xl text-zinc-900 mb-4">專屬量頭訂製 ｜ 頂級真人少女髮</h3>
               <p className="text-zinc-500 font-light text-sm leading-relaxed mb-8">
                 完美解決頭頂分線變寬、扁塌、白髮或增豐厚髮等困擾。
               </p>
@@ -3425,7 +3387,7 @@ export default function App() {
                   },
                   {
                     q: "Q：看相片感覺還不錯，收到髮片後會不會很爛的品質？",
-                    a: "以我目前代理的這間髮片工廠，本身價格並不是最便宜的，在大陸算中等價位。因為我當初找工廠時價格不是我的第一考量點，髮片品質才是我第一考慮的。那時在大陸也買了不少價格便宜、網上相片看起來也不錯的髮片，但收到髮片時，就想直接丟垃圾筒了。我目前代理的這家髮片是我收到品質我認為最好的，所以我才敢跟他簽約談代理。目前來我工作室看過的髮友也都認為品質比他們自己在戴的還好，也有髮友把我的髮片拿給魔髮部屋跟愛德蘭絲的設計師看過，設計師也都認為髮片的品質比他們自家髮片還要好。"
+                    a: "以我目前代理的這間髮片工廠，本身價格並不是最便宜的，在大陸算中等價位。因為我當初找工廠時價格不是我的第一考量點，髮片品質才是我第一考慮的。那時在大陸也買了不少價格便宜、網上相片看起來也不錯的髮片，但收到髮片時，就想直接丟垃圾筒了。我目前代理的這家髮片是我收到品質我認為最好的，所以我才敢跟他簽約談代理。先前來我工作室看過的髮友也都認為品質比他們自己在戴的還好，也有髮友把我的髮片拿給魔髮部屋跟愛德蘭絲的設計師看過，設計師也都認為髮片的品質比他們自家髮片還要好。"
                   },
                   {
                     q: "Q：是全真髮嗎？可以染燙嗎？",
@@ -3433,7 +3395,7 @@ export default function App() {
                   },
                   {
                     q: "Q：之後的剪髮及維修服務？",
-                    a: "關於剪髮的部分是目前較困擾的部分，因為我自己本身是不會剪的，當初有考慮去學剪髮但最後還是決定交給專業的設計師會較好。目前在台北、中壢、高雄都有配合的設計師，收到髮片後可以自行跟設計師聯絡預約時間剪髮。髮片修剪完後，之後自身頭髮的修剪就可以自己到你原本的髮片門市做修剪就好。維修的部分，之後也都可以送回原廠做補髮跟網底維修不用擔心哦。"
+                    a: "關於剪髮的部分，交給專業的設計師最安心。目前在台北、台中、高雄門市都有專業的設計師，髮片送達後可以線上預約門市時間進行現場修剪。髮片修剪完成後，平時自身頭髮的修剪也可以定期回到門市配合修剪。維修的部分，也都可以送回原廠做補髮跟網底維修，完全不用擔心哦。"
                   },
                   {
                     q: "Q：之後訂製需要重新做頭模嗎？",

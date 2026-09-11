@@ -5,7 +5,7 @@ import {
   CheckCircle2, Sparkles, Activity, Star, MessageCircle, 
   Check, Ruler, Clock, Plus, Lock, Heart, Smile,
   ChevronLeft, ChevronRight, Trash2, Loader2, Feather, ShieldCheck,
-  Sparkle, Layers, Cpu
+  Sparkle, Layers, Cpu, Play, Image as ImageIcon
 } from 'lucide-react';
 import { WomensWigProduct } from '../types';
 import EditableText from './EditableText';
@@ -366,6 +366,116 @@ export default function WomensWigCatalog({
       {/* Decorative Top Accent */}
       <div className="absolute top-0 inset-x-0 h-1.5 bg-gradient-to-r from-brand-500 via-brand-300 to-brand-500 z-50 animate-pulse" />
 
+      {/* Top Banner Feature: 大篇幅女性專區頂部視覺橫幅看板 (無邊框，照片區塊直接拉寬至「試戴」文字後方) */}
+      <section id="womens-top-hero-banner" className="w-full bg-white relative overflow-hidden">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 sm:py-6 lg:py-8">
+          
+          {/* Main Visual Banner Card (完全無邊框，清爽通透) */}
+          <div className="relative w-full bg-white flex flex-col lg:flex-row items-center justify-between gap-6 lg:gap-4">
+            
+            {/* Left Content Overlay (大篇幅留白，凸顯「女性專區」與報名體驗按鈕) */}
+            <div className="w-full lg:w-auto shrink-0 flex flex-col justify-center text-left py-2 sm:py-4 lg:pr-4 z-10">
+              
+              {/* Main Headline: 女性專區 (黑體無襯線字體) */}
+              <h1 className="text-4xl sm:text-5xl lg:text-6xl font-sans font-black text-zinc-950 tracking-tight leading-tight mb-5 sm:mb-7">
+                <EditableText
+                  idKey="womens-top-tag"
+                  defaultText="女性專區"
+                  as="span"
+                  className="block text-zinc-950 font-sans font-black"
+                  isAdmin={isAdmin}
+                  isEditMode={isEditMode}
+                  siteContent={siteContent}
+                  onSave={onSave || (() => {})}
+                />
+              </h1>
+
+              {/* Red CTA Button (報名體驗 ▸) + 試戴說明同一行 */}
+              <div className="flex items-center gap-3 sm:gap-4 flex-wrap sm:flex-nowrap">
+                <a
+                  href="https://line.me/R/ti/p/@davidhair"
+                  target="_blank"
+                  rel="noreferrer"
+                  className="group inline-flex items-center justify-between gap-3 sm:gap-5 bg-[#990022] hover:bg-[#80001c] text-white px-6 sm:px-8 py-2.5 sm:py-3.5 rounded shadow-sm hover:shadow-md font-sans font-bold text-base sm:text-lg transition-all duration-300 transform hover:-translate-y-0.5 active:translate-y-0 shrink-0"
+                >
+                  <span className="tracking-widest">
+                    <EditableText
+                      idKey="womens-top-cta-text"
+                      defaultText="報名體驗"
+                      as="span"
+                      isAdmin={isAdmin}
+                      isEditMode={isEditMode}
+                      siteContent={siteContent}
+                      onSave={onSave || (() => {})}
+                    />
+                  </span>
+                  <Play className="w-3.5 h-3.5 sm:w-4 sm:h-4 fill-white text-white transition-transform group-hover:translate-x-1" />
+                </a>
+
+                <span className="text-xs sm:text-sm lg:text-base font-sans text-zinc-700 font-medium whitespace-nowrap">
+                  一對一隱密 VIP 包廂 ‧ 免費到店試戴
+                </span>
+              </div>
+
+              {/* Admin Image Replacement Quick Control */}
+              {isAdmin && isEditMode && (
+                <div className="mt-4 p-3 bg-zinc-50 rounded-xl border border-zinc-200 text-xs space-y-2 max-w-md">
+                  <div className="flex items-center gap-1.5 font-bold text-zinc-700">
+                    <ImageIcon className="w-4 h-4 text-brand-600" />
+                    <span>管理員：自訂頂部看板照片 URL</span>
+                  </div>
+                  <div className="flex gap-2">
+                    <input
+                      type="text"
+                      placeholder="輸入圖片網址 (如 /images/女生BeforeAfter.jpg)"
+                      defaultValue={siteContent['womens-top-banner-img'] || ''}
+                      id="womens-top-banner-img-input"
+                      className="flex-1 px-2.5 py-1 text-xs border border-zinc-300 rounded bg-white text-zinc-900"
+                    />
+                    <button
+                      type="button"
+                      onClick={() => {
+                        const input = document.getElementById('womens-top-banner-img-input') as HTMLInputElement;
+                        if (input && onSave) {
+                          onSave('womens-top-banner-img', input.value.trim());
+                        }
+                      }}
+                      className="px-3 py-1 bg-brand-600 text-white font-bold rounded hover:bg-brand-500 transition-colors"
+                    >
+                      儲存圖片
+                    </button>
+                    {siteContent['womens-top-banner-img'] && (
+                      <button
+                        type="button"
+                        onClick={() => {
+                          if (onSave) onSave('womens-top-banner-img', '');
+                        }}
+                        className="px-2.5 py-1 bg-zinc-200 text-zinc-700 font-bold rounded hover:bg-zinc-300 transition-colors"
+                      >
+                        重設預設
+                      </button>
+                    )}
+                  </div>
+                </div>
+              )}
+
+            </div>
+
+            {/* Right Photo Block: 照片區塊直接拉寬至「試戴」文字後方，完全無邊框 */}
+            <div className="w-full lg:flex-1 h-[280px] sm:h-[340px] lg:h-[380px] xl:h-[420px] relative overflow-hidden flex items-center justify-center lg:justify-start">
+              <img
+                src={siteContent['womens-top-banner-img'] || '/images/女生BeforeAfter.jpg'}
+                alt="女性專區 假髮推薦"
+                className="w-full h-full object-contain object-left lg:object-left"
+                referrerPolicy="no-referrer"
+              />
+            </div>
+
+          </div>
+
+        </div>
+      </section>
+
       {/* Premium Header Hero */}
       <header className="bg-zinc-950 text-white relative py-20 overflow-hidden border-b border-brand-950/20">
         <div className="absolute inset-0 opacity-[0.03] bg-[linear-gradient(rgba(255,255,255,1)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,1)_1px,transparent_1px)] bg-[size:16px_16px]" />
@@ -503,22 +613,22 @@ export default function WomensWigCatalog({
                       <ArrowDown className="w-4 h-4 animate-bounce" />
                     </div>
                   </div>
+                </div>
 
-                  {/* Bottom Information Overlay */}
-                  <div className="absolute bottom-3 inset-x-3 sm:bottom-4 sm:inset-x-6 z-20 bg-zinc-950/90 backdrop-blur-md border border-brand-500/30 text-white rounded-2xl p-3 sm:p-4 flex flex-col sm:flex-row items-center justify-between gap-3 shadow-2xl">
-                    <div className="text-xs sm:text-sm font-bold text-zinc-300 text-center sm:text-left">
-                      <span className="text-brand-400 font-black">【真人實證蛻變】</span> 100% 少女真髮 ‧ 頂部雙層網底 ‧ 3秒無痕蓬鬆高顱頂
-                    </div>
-                    <a
-                      href="https://line.me/R/ti/p/@davidhair"
-                      target="_blank"
-                      rel="noreferrer"
-                      className="shrink-0 bg-[#06C755] hover:bg-[#05b34c] text-white text-xs sm:text-sm font-black px-4 py-2 rounded-xl flex items-center gap-1.5 shadow transition-transform hover:scale-105"
-                    >
-                      <MessageCircle className="w-4 h-4 fill-white" />
-                      LINE 女性專員諮詢
-                    </a>
+                {/* Bottom Information Bar placed cleanly below the photo */}
+                <div className="bg-zinc-900 border-t border-zinc-800/90 text-white p-3.5 sm:p-4 px-4 sm:px-6 flex flex-col sm:flex-row items-center justify-between gap-3">
+                  <div className="text-xs sm:text-sm font-bold text-zinc-200 text-center sm:text-left">
+                    <span className="text-brand-400 font-black">【真人實證蛻變】</span> 100% 少女真髮 ‧ 頂部雙層網底 ‧ 3秒無痕蓬鬆高顱頂
                   </div>
+                  <a
+                    href="https://line.me/R/ti/p/@davidhair"
+                    target="_blank"
+                    rel="noreferrer"
+                    className="shrink-0 bg-[#06C755] hover:bg-[#05b34c] text-white text-xs sm:text-sm font-black px-4 py-2 rounded-xl flex items-center gap-1.5 shadow transition-transform hover:scale-105"
+                  >
+                    <MessageCircle className="w-4 h-4 fill-white" />
+                    LINE 女性專員諮詢
+                  </a>
                 </div>
 
               </div>
@@ -623,7 +733,7 @@ export default function WomensWigCatalog({
               {
                 step: '03',
                 title: '售後尊榮保固服務',
-                desc: '包含配戴洗護教學、專屬護理包，並享一年內免費修剪調整與補髮保固。'
+                desc: '包含配戴洗護教學，並享一年內免費修剪調整與補髮保固。'
               }
             ].map((item, index) => (
               <div key={item.step} className="relative flex flex-col items-center text-center space-y-3 bg-zinc-900/70 p-6 rounded-2xl border border-zinc-800 group hover:bg-zinc-900 transition-all duration-300">

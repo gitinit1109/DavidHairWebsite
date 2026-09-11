@@ -76,7 +76,7 @@ export default function ReviewSystem() {
     {
       id: 'customer-feedback-6',
       title: '一對一專屬隱密空間諮詢感受',
-      description: '大衛哥極致注重顧客隱私與諮詢品質。全預約制一對一門市服務，不強迫推銷不層層加價。親自為每位髮友解說毛囊學與打版編織原理，讓假髮訂製真正能感到無壓、親切與尊榮。',
+      description: '大衛哥極致注重顧客隱私與諮詢品質。全預約制一對一門市服務，不強迫推銷不層層加價，讓假髮訂製真正能感到無壓、親切與尊榮。',
       imgUrl: '/images/客戶評價6.jpg',
       tags: ['隱私奢華包廂', '一對一親切服務', '無壓諮詢', '誠信透明'],
       comments: [
